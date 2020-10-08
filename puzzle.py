@@ -1,4 +1,4 @@
-def initialState():
+def initialState(size):
     """
     Returns the initial state of the puzzle 
     """

@@ -1,3 +1,24 @@
+def initialState():
+    """
+    Returns the initial state of the puzzle 
+    """
+    pass
+
+
+def actions(puzzle):
+    """
+    Returns set of all possible actions available on the puzzle 
+    """
+    pass
+
+
+def puzzleSolved(puzzle):
+    """ 
+    Returns whether the puzzle is solved or not 
+    """
+    pass
+
+
 def h1(currentState, goalState):
     """
     Takes current state and goal state of puzzle. Then calculates the number of misplaced tiles. 

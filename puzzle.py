@@ -36,3 +36,10 @@ def h1(currentState, goalState):
                 misplacedTiles += 1 
 
     return misplacedTiles 
+
+
+def h2(currentState, goalState):
+    """
+    Manhatton Distance 
+    """
+    pass

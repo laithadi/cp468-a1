@@ -13,29 +13,35 @@ def main():
     # a_star_search()
     # heuristic()
 
-    gameOver = False
+    # gameOver = False
+    # i = 0
 
-    # solve the puzzle
-    while (not gameOver):
-        # create puzzle
-        # puzzle = pz.initialState(puzzle_size)
+    # while (i != 100):
+    #     # create a OGpuzzle 
+    #     OGpuzzle = pz.initialState(puzzle_size)
 
-        # solve with different heuristics 
-        # heuristic 1 
-        ... 
-
-
-        # heuristic 2
-        ...
-
-
-        # heuristic 3 
-        ... 
-
-    
-    # formate and display table 
+    #     # solve the puzzle
+    #     while (not gameOver):
+    #         # deepcopy the OGpuzzle 
+             
+    #         # heuristic 1 
         
 
+    #     while (not gameOver):
+    #         # deepcopy the OGpuzzle 
+
+    #         # heuristic 2
+
+    #     while (not gameOver):
+    #         # deepcopy the OGpuzzle 
+
+    #         # heuristic 2
+
+
+    #     i += 1
+        
+
+    # # formate and display the table 
 
 
 

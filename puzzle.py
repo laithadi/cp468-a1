@@ -36,9 +36,19 @@ def actions(puzzle):
     # find the blank spot 
     row_blank, col_blank = blankSpot(temp)
 
-    if (row_blank + 1) <= 2:
-        acts.add((row_blank + 1, col_blank))
-        # if (col_blank + 1) <= 
+    # up 
+    if ((row_blank - 1) >= 0): acts.add((row_blank - 1, col_blank)) 
+
+    # down 
+    if ((row_blank + 1) <= length): acts.add((row_blank + 1, col_blank))
+
+    # right 
+    if ((col_blank + 1) <= length): acts.add((row_blank, col_blank + 1))
+
+    # left 
+    if ((col_blank - 1) >= 0): acts.add((row_blank, col_blank - 1))
+
+    return acts 
 
 
 
@@ -58,8 +68,7 @@ def result(puzzle, act, blank):
 
     row0 = act[0]
     col0 = act[1]
-    row1 = blank[0]
-    col1 = blank[1]
+    row1, col1 = blankSpot(temp)
 
     numAct = temp[row0][col0]
     blank1 = temp[row1][col1]

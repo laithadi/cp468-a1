@@ -1,6 +1,34 @@
 import copy 
 
-GOALSTATE = []
+def goalState(size):
+    """
+    depending on the size, the goal state is longer/shorter
+    """
+    if size == 8: 
+        goalState = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, None]
+        ]
+
+    elif size == 15:
+        goalState = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, None]
+        ]
+
+    else:
+        goalState = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, None]
+        ]
+
+    return goalState
 
 
 def initialState(size):
@@ -79,7 +107,7 @@ def result(puzzle, act, blank):
     return temp
 
 
-def h1(currentState, GOALSTATE):
+def h1(currentState, goalState):
     """
     Takes current state and goal state of puzzle. Then calculates the number of misplaced tiles. 
     ---------------------------------------------------------------------------------------------
@@ -92,18 +120,18 @@ def h1(currentState, GOALSTATE):
 
     for i in range(0, length):
         for j in range(0, length):
-            if (currentState[i][j] != GOALSTATE[i][j]):
+            if (currentState[i][j] != goalState[i][j]):
                 misplacedTiles += 1 
 
     return misplacedTiles 
 
 
-def puzzleSolved(puzzle):
+def puzzleSolved(puzzle, goalState):
     """ 
     Returns whether the puzzle is solved or not 
     """
     
-    temp = h1(puzzle, GOALSTATE)
+    temp = h1(puzzle, goalState)
 
     if (temp == 0):
         solved = True
@@ -113,7 +141,7 @@ def puzzleSolved(puzzle):
     return solved
 
 
-def h2(currentState, GOALSTATE):
+def h2(currentState, goalState):
     """
     Manhatton Distance 
     """

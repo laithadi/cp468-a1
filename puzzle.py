@@ -38,7 +38,7 @@ def actions(puzzle):
 
     if (row_blank + 1) <= 2:
         acts.add((row_blank + 1, col_blank))
-        if (col_blank + 1) <= 
+        # if (col_blank + 1) <= 
 
 
 

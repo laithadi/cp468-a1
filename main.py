@@ -15,9 +15,9 @@ def main():
     # heuristic()
 
     gameOver = puzzleSolved(puzzleCreated, goalState(puzzle_size))
-    i = 0
+    j = 0
 
-    while (i != 100):
+    while (j != 100):
         originalPuzzle = puzzleCreated
         if(not gameOver):
             h1(originalPuzzle, goalState(puzzle_size))
@@ -44,7 +44,7 @@ def main():
 
             #         # heuristic 2
 
-        i += 1
+        j += 1
 
         # # formate and display the table
 

@@ -163,3 +163,17 @@ def h2(currentState, goalState):
     Manhatton Distance 
     """
     pass
+
+def h3(currentState, goalState):
+    """
+    Havent decided yet on which heuristic to use 
+    """
+    pass
+
+def aStar(currentState):
+    """ 
+    Takes in the the currentState of the puzzle and solves it.
+    Returns: 
+        - numSteps : number of steps to find solution. Essentially the number of times we call result()
+        - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
+    """

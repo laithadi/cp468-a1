@@ -44,9 +44,24 @@ def main():
 
             #         # heuristic 2
 
-            #     i += 1
+        i += 1
 
-            # # formate and display the table
+        # # formate and display the table
+
+    print("Show Table...")
+    print("-------------")
+    if puzzle_size == 8:
+        for i in range(3):
+            print("|{}|{}|{}|".format(
+                puzzleCreated[i][0], puzzleCreated[i][1], puzzleCreated[i][2]))
+    elif puzzle_size == 15:
+        for i in range(4):
+            print("|{}|{}|{}|{}|".format(
+                puzzleCreated[i][0], puzzleCreated[i][1], puzzleCreated[i][2], puzzleCreated[i][3]))
+    elif puzzle_size == 24:
+        for i in range(4):
+            print("|{}|{}|{}|{}|{}|".format(
+                puzzleCreated[i][0], puzzleCreated[i][1], puzzleCreated[i][2], puzzleCreated[i][3], puzzleCreated[i][4]))
 
 
 if __name__ == "__main__":

@@ -177,3 +177,4 @@ def aStar(currentState):
         - numSteps : number of steps to find solution. Essentially the number of times we call result()
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
+    pass

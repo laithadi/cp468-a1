@@ -59,9 +59,10 @@ def blankSpot(puzzle):
 
     for i in range(0, length):
         for j in range(0, length):
-            if temp[i][j] == None:
+            if temp[i][j] == 0:
                 return i, j
 
+    return temp
 
 def actions(puzzle):
     """
@@ -73,7 +74,8 @@ def actions(puzzle):
     acts = set()
 
     # find the blank spot
-    row_blank, col_blank = blankSpot(temp)
+    rowcol = blankSpot(temp)
+    row_blank, col_blank = rowcol[0], rowcol[1]
 
     # up
     if ((row_blank - 1) >= 0):
@@ -110,7 +112,8 @@ def result(puzzle, act, blank):
 
     row0 = act[0]
     col0 = act[1]
-    row1, col1 = blankSpot(temp)
+    rowcol = blankSpot(temp)
+    row1, col1 = rowcol[0], rowcol[1]
 
     numAct = temp[row0][col0]
     blank1 = temp[row1][col1]

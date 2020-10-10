@@ -1,4 +1,6 @@
 import copy 
+import random
+import numpy as np
 
 def goalState(size):
     """
@@ -35,7 +37,9 @@ def initialState(size):
     """
     Returns the initial state of the puzzle 
     """
-    pass
+    arr = np.arange(9).reshape(3,3)
+    np.random.shuffle(arr)
+    return arr
 
 
 def blankSpot(puzzle):

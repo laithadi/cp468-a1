@@ -1,6 +1,5 @@
 import puzzle as pz
-from puzzle import initialState
-from puzzle import goalState, h1, puzzleSolved, h2
+from puzzle import goalState, h1, puzzleSolved, h2, initialState
 
 
 def main():
@@ -21,8 +20,10 @@ def main():
         originalPuzzle = puzzleCreated
         if(not gameOver):
             h1 = h1(originalPuzzle, goalState(puzzle_size))
+        gameOver = False
         if(not gameOver):
             h2 = h2(originalPuzzle, goalState(puzzle_size))
+        gameOver = False
         if(not gameOver):
             h3 = h3(originalPuzzle, goalState(puzzle_size))
             #     # create a OGpuzzle

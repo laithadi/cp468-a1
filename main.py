@@ -1,4 +1,6 @@
 import puzzle as pz
+from puzzle import initialState
+from puzzle import goalState, h1, puzzleSolved, h2
 
 
 def main():
@@ -8,41 +10,43 @@ def main():
         puzzle_size = int(input(
             "What size of puzzle you want to have? Enter 8, 15 or 24 Please: "))
     print("You choose {}-puzzle, now it is  time to create the puzzle for you...".format(puzzle_size))
-    # create_puzzle(puzzle_size)
+    puzzleCreated = pz.initialState(puzzle_size)
     print("Puzzle created...Show puzzle for you now...")
-    # a_star_search()
     # heuristic()
 
-    # gameOver = False
-    # i = 0
+    gameOver = puzzleSolved(puzzleCreated, goalState(puzzle_size))
+    i = 0
 
-    # while (i != 100):
-    #     # create a OGpuzzle 
-    #     OGpuzzle = pz.initialState(puzzle_size)
+    while (i != 100):
+        originalPuzzle = puzzleCreated
+        if(not gameOver):
+            h1(originalPuzzle, goalState(puzzle_size))
+        if(not gameOver):
+            h2(originalPuzzle, goalState(puzzle_size))
+        if(not gameOver):
+            h3(originalPuzzle, goalState(puzzle_size))
+            #     # create a OGpuzzle
+            #     OGpuzzle = pz.initialState(puzzle_size)
 
-    #     # solve the puzzle
-    #     while (not gameOver):
-    #         # deepcopy the OGpuzzle 
-             
-    #         # heuristic 1 
-        
+            #     # solve the puzzle
+            #     while (not gameOver):
+            #         # deepcopy the OGpuzzle
 
-    #     while (not gameOver):
-    #         # deepcopy the OGpuzzle 
+            #         # heuristic 1
 
-    #         # heuristic 2
+            #     while (not gameOver):
+            #         # deepcopy the OGpuzzle
 
-    #     while (not gameOver):
-    #         # deepcopy the OGpuzzle 
+            #         # heuristic 2
 
-    #         # heuristic 2
+            #     while (not gameOver):
+            #         # deepcopy the OGpuzzle
 
+            #         # heuristic 2
 
-    #     i += 1
-        
+            #     i += 1
 
-    # # formate and display the table 
-
+            # # formate and display the table
 
 
 if __name__ == "__main__":

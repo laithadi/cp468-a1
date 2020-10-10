@@ -1,33 +1,34 @@
-import copy 
+import copy
 import random
 import numpy as np
+
 
 def goalState(size):
     """
     depending on the size, the goal state is longer/shorter
     """
-    if size == 8: 
+    if size == 8:
         goalState = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, None]
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, None]
         ]
 
     elif size == 15:
         goalState = [
-        [1, 2, 3, 4],
-        [5, 6, 7, 8],
-        [9, 10, 11, 12],
-        [13, 14, 15, None]
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12],
+            [13, 14, 15, None]
         ]
 
     else:
         goalState = [
-        [1, 2, 3, 4, 5],
-        [6, 7, 8, 9, 10],
-        [11, 12, 13, 14, 15],
-        [16, 17, 18, 19, 20],
-        [21, 22, 23, 24, None]
+            [1, 2, 3, 4, 5],
+            [6, 7, 8, 9, 10],
+            [11, 12, 13, 14, 15],
+            [16, 17, 18, 19, 20],
+            [21, 22, 23, 24, None]
         ]
 
     return goalState
@@ -38,13 +39,13 @@ def initialState(size):
     Returns the initial state of the puzzle 
     """
     if size == 8:
-        arr = np.arange(9).reshape(3,3)
+        arr = np.arange(9).reshape(3, 3)
         np.random.shuffle(arr)
     elif size == 15:
-        arr = np.arange(16).reshape(4,4)
+        arr = np.arange(16).reshape(4, 4)
         np.random.shuffle(arr)
     else:
-        arr = np.arange(25).reshape(5,5)
+        arr = np.arange(25).reshape(5, 5)
         np.random.shuffle(arr)
     return arr
 
@@ -59,8 +60,7 @@ def blankSpot(puzzle):
     for i in range(0, length):
         for j in range(0, length):
             if temp[i][j] == None:
-                return i, j 
-
+                return i, j
 
 
 def actions(puzzle):
@@ -70,25 +70,28 @@ def actions(puzzle):
     temp = copy.deepcopy(puzzle)
     length = len(temp) - 1
 
-    acts = set() 
+    acts = set()
 
-    # find the blank spot 
+    # find the blank spot
     row_blank, col_blank = blankSpot(temp)
 
-    # up 
-    if ((row_blank - 1) >= 0): acts.add((row_blank - 1, col_blank)) 
+    # up
+    if ((row_blank - 1) >= 0):
+        acts.add((row_blank - 1, col_blank))
 
-    # down 
-    if ((row_blank + 1) <= length): acts.add((row_blank + 1, col_blank))
+    # down
+    if ((row_blank + 1) <= length):
+        acts.add((row_blank + 1, col_blank))
 
-    # right 
-    if ((col_blank + 1) <= length): acts.add((row_blank, col_blank + 1))
+    # right
+    if ((col_blank + 1) <= length):
+        acts.add((row_blank, col_blank + 1))
 
-    # left 
-    if ((col_blank - 1) >= 0): acts.add((row_blank, col_blank - 1))
+    # left
+    if ((col_blank - 1) >= 0):
+        acts.add((row_blank, col_blank - 1))
 
-    return acts 
-
+    return acts
 
 
 def result(puzzle, act, blank):
@@ -128,25 +131,25 @@ def h1(currentState, goalState):
     """
 
     length = len(currentState)
-
+    misplacedTiles = 0
     for i in range(0, length):
         for j in range(0, length):
             if (currentState[i][j] != goalState[i][j]):
-                misplacedTiles += 1 
+                misplacedTiles += 1
 
-    return misplacedTiles 
+    return misplacedTiles
 
 
 def puzzleSolved(puzzle, goalState):
     """ 
     Returns whether the puzzle is solved or not 
     """
-    
+
     temp = h1(puzzle, goalState)
 
     if (temp == 0):
         solved = True
-    else: 
+    else:
         solved = False
 
     return solved

@@ -64,6 +64,7 @@ def blankSpot(puzzle):
 
     return temp
 
+
 def actions(puzzle):
     """
     Returns set of all possible actions available on the puzzle 
@@ -78,6 +79,7 @@ def actions(puzzle):
     row_blank, col_blank = rowcol[0], rowcol[1]
 
     # up
+    # Exception has occurred: ValueError
     if ((row_blank - 1) >= 0):
         acts.add((row_blank - 1, col_blank))
 
@@ -159,11 +161,11 @@ def h1(currentState, goalState):
 
 
 def get_index(array, value):
-  for i in range(len(array)):
-    for j in range(len(array[i])):
-      if array[i][j] == value:
-        return (i, j)
-  return -1, -1
+    for i in range(len(array)):
+        for j in range(len(array[i])):
+            if array[i][j] == value:
+                return (i, j)
+    return -1, -1
 
 
 def h2(currentState, goalState):
@@ -175,17 +177,18 @@ def h2(currentState, goalState):
 
     for x in range(length):
         for y in range(length):
-            (goalx,goaly) = get_index(goalState, currentState[x][y])
+            (goalx, goaly) = get_index(goalState, currentState[x][y])
             manhatton += abs(x - goalx) + abs(y - goaly)
 
-
     return manhatton
+
 
 def h3(currentState, goalState):
     """
     Havent decided yet on which heuristic to use 
     """
     pass
+
 
 def aStar(currentState, goalState, max_num, heuri):
     """ 
@@ -196,4 +199,3 @@ def aStar(currentState, goalState, max_num, heuri):
     """
 
     pass
-

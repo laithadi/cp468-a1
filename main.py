@@ -26,6 +26,12 @@ def main():
         gameOver = False
         if(not gameOver):
             h3_mt = h3(originalPuzzle, goalState(puzzle_size))
+        if (h1 < h2 < h3):
+            smallest_mt = h1
+        elif (h2 < h1 < h3):
+            smallest_mt = h2
+        elif (h3 < h1 < h2):
+            smallest_mt = h3
             #     # create a OGpuzzle
             #     OGpuzzle = pz.initialState(puzzle_size)
 

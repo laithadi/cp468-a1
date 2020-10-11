@@ -178,6 +178,21 @@ def aStar(currentState, goalState, max_num, heuri):
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
 
+    # deepcopy currentState and goalState
+    currSt = copy.deepcopy(currentState)
+    goalSt = copy.deepcopy(goalState)
+
+    # variables 
+    pzSolved = False 
+
+    # continue running this loop until we solved the puzzle 
+    while (pzSolved is False):
+
+        # get all the possible actions we can do with the current state of the puzzle 
+        acts = actions(currSt)
+
+        # cre
+
 
 
     pass

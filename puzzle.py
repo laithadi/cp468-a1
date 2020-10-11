@@ -96,7 +96,7 @@ def actions(puzzle):
     return acts
 
 
-def result(puzzle, act, blank):
+def result(puzzle, act):
     """
     Takes in the action (move) and does it on the puzzle. 
     -------------------------------------------------------
@@ -124,6 +124,21 @@ def result(puzzle, act, blank):
     return temp
 
 
+def puzzleSolved(puzzle, goalState):
+    """ 
+    Returns whether the puzzle is solved or not 
+    """
+
+    temp = h1(puzzle, goalState)
+
+    if (temp == 0):
+        solved = True
+    else:
+        solved = False
+
+    return solved
+
+
 def h1(currentState, goalState):
     """
     Takes current state and goal state of puzzle. Then calculates the number of misplaced tiles. 
@@ -143,19 +158,12 @@ def h1(currentState, goalState):
     return misplacedTiles
 
 
-def puzzleSolved(puzzle, goalState):
-    """ 
-    Returns whether the puzzle is solved or not 
-    """
-
-    temp = h1(puzzle, goalState)
-
-    if (temp == 0):
-        solved = True
-    else:
-        solved = False
-
-    return solved
+def get_index(array, value):
+  for i in range(len(array)):
+    for j in range(len(array[i])):
+      if array[i][j] == value:
+        return (i, j)
+  return -1, -1
 
 
 def h2(currentState, goalState):
@@ -187,28 +195,5 @@ def aStar(currentState, goalState, max_num, heuri):
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
 
-    # deepcopy currentState and goalState
-    currSt = copy.deepcopy(currentState)
-    goalSt = copy.deepcopy(goalState)
-
-    # variables 
-    pzSolved = False 
-
-    # continue running this loop until we solved the puzzle 
-    while (pzSolved is False):
-
-        # get all the possible actions we can do with the current state of the puzzle 
-        acts = actions(currSt)
-
-        # cre
-
-
-
     pass
 
-def get_index(array, value):
-  for i in range(len(array)):
-    for j in range(len(array[i])):
-      if array[i][j] == value:
-        return (i, j)
-  return -1, -1

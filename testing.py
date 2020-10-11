@@ -24,7 +24,7 @@ print("---------------------------------------------\n")
 
 # testing result 
 for act in acts:
-    resultPz = pz.result(initialState, act, blankSpot)
+    resultPz = pz.result(initialState, act)
     print(resultPz)
     print('\n')
 print("---------------------------------------------\n")

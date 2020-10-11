@@ -1,5 +1,5 @@
 import puzzle as pz
-from puzzle import goalState, h1, puzzleSolved, h2, initialState
+from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3
 
 
 def main():
@@ -19,13 +19,13 @@ def main():
     while (j != 100):
         originalPuzzle = puzzleCreated
         if(not gameOver):
-            h1 = h1(originalPuzzle, goalState(puzzle_size))
+            h1_mt = h1(originalPuzzle, goalState(puzzle_size))
         gameOver = False
         if(not gameOver):
-            h2 = h2(originalPuzzle, goalState(puzzle_size))
+            h2_mt = h2(originalPuzzle, goalState(puzzle_size))
         gameOver = False
         if(not gameOver):
-            h3 = h3(originalPuzzle, goalState(puzzle_size))
+            h3_mt = h3(originalPuzzle, goalState(puzzle_size))
             #     # create a OGpuzzle
             #     OGpuzzle = pz.initialState(puzzle_size)
 

@@ -160,9 +160,18 @@ def puzzleSolved(puzzle, goalState):
 
 def h2(currentState, goalState):
     """
-    Manhatton Distance 
+    Manhatton Distance
     """
-    pass
+    length = len(currentState)
+    manhatton = 0
+
+    for x in range(length):
+        for y in range(length):
+            (goalx,goaly) = get_index(goalState, currentState[x][y])
+            manhatton += abs(x - goalx) + abs(y - goaly)
+
+
+    return manhatton
 
 def h3(currentState, goalState):
     """
@@ -181,3 +190,10 @@ def aStar(currentState, goalState, max_num, heuri):
 
 
     pass
+
+def get_index(array, value):
+  for i in range(len(array)):
+    for j in range(len(array[i])):
+      if array[i][j] == value:
+        return (i, j)
+  return -1, -1

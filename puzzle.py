@@ -170,11 +170,14 @@ def h3(currentState, goalState):
     """
     pass
 
-def aStar(currentState):
+def aStar(currentState, goalState, max_num, heuri):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 
         - numSteps : number of steps to find solution. Essentially the number of times we call result()
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
+
+
+
     pass

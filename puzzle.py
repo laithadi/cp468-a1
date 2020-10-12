@@ -64,6 +64,7 @@ def blankSpot(puzzle):
 
     return temp
 
+
 def actions(puzzle):
     """
     Returns set of all possible actions available on the puzzle 
@@ -78,6 +79,7 @@ def actions(puzzle):
     row_blank, col_blank = rowcol[0], rowcol[1]
 
     # up
+    # Exception has occurred: ValueError
     if ((row_blank - 1) >= 0):
         acts.add((row_blank - 1, col_blank))
 
@@ -96,7 +98,7 @@ def actions(puzzle):
     return acts
 
 
-def result(puzzle, act, blank):
+def result(puzzle, act):
     """
     Takes in the action (move) and does it on the puzzle. 
     -------------------------------------------------------
@@ -124,6 +126,21 @@ def result(puzzle, act, blank):
     return temp
 
 
+def puzzleSolved(puzzle, goalState):
+    """ 
+    Returns whether the puzzle is solved or not 
+    """
+
+    temp = h1(puzzle, goalState)
+
+    if (temp == 0):
+        solved = True
+    else:
+        solved = False
+
+    return solved
+
+
 def h1(currentState, goalState):
     """
     Takes current state and goal state of puzzle. Then calculates the number of misplaced tiles. 
@@ -143,32 +160,35 @@ def h1(currentState, goalState):
     return misplacedTiles
 
 
-def puzzleSolved(puzzle, goalState):
-    """ 
-    Returns whether the puzzle is solved or not 
-    """
-
-    temp = h1(puzzle, goalState)
-
-    if (temp == 0):
-        solved = True
-    else:
-        solved = False
-
-    return solved
+def get_index(array, value):
+    for i in range(len(array)):
+        for j in range(len(array[i])):
+            if array[i][j] == value:
+                return (i, j)
+    return -1, -1
 
 
 def h2(currentState, goalState):
     """
-    Manhatton Distance 
+    Manhatton Distance
     """
-    pass
+    length = len(currentState)
+    manhatton = 0
+
+    for x in range(length):
+        for y in range(length):
+            (goalx, goaly) = get_index(goalState, currentState[x][y])
+            manhatton += abs(x - goalx) + abs(y - goaly)
+
+    return manhatton
+
 
 def h3(currentState, goalState):
     """
     Havent decided yet on which heuristic to use 
     """
     pass
+
 
 def aStar(currentState, goalState, max_num, heuri):
     """ 

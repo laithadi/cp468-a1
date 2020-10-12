@@ -178,6 +178,6 @@ def aStar(currentState, goalState, max_num, heuri):
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
 
-
+    
 
     pass

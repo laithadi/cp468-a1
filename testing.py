@@ -1,6 +1,6 @@
 import puzzle as pz
 
-PUZZLESIZE = 8
+PUZZLESIZE = 15
 
 # testing goalState
 goalState = pz.goalState(PUZZLESIZE)

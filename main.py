@@ -1,5 +1,6 @@
 import puzzle as pz
 from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3
+import copy
 
 
 def main():
@@ -9,21 +10,21 @@ def main():
         puzzle_size = int(input(
             "What size of puzzle you want to have? Enter 8, 15 or 24 Please: "))
     print("You choose {}-puzzle, now it is  time to create the puzzle for you...".format(puzzle_size))
-    puzzleCreated = pz.initialState(puzzle_size)
+    originalPuzzle = pz.initialState(puzzle_size)
     print("Puzzle created...Show puzzle for you now...")
     # heuristic()
 
-    gameOver = puzzleSolved(puzzleCreated, goalState(puzzle_size))
+    gameOver = puzzleSolved(originalPuzzle, goalState(puzzle_size))
     j = 0
 
     while (j != 100):
-        originalPuzzle = puzzleCreated
+        puzzle4Execute = copy.deepcopy(originalPuzzle)
         if(not gameOver):
             h1_mt = h1(originalPuzzle, goalState(puzzle_size))
-        gameOver = False
+        #gameOver = False
         if(not gameOver):
             h2_mt = h2(originalPuzzle, goalState(puzzle_size))
-        gameOver = False
+        #gameOver = False
         if(not gameOver):
             h3_mt = h3(originalPuzzle, goalState(puzzle_size))
         if (h1 < h2 < h3):

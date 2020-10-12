@@ -190,7 +190,7 @@ def h3(currentState, goalState):
     pass
 
 
-def aStar(currentState, goalState, max_num, heuri):
+def aStar(self, goalState, heuristic, output):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 
@@ -198,7 +198,45 @@ def aStar(currentState, goalState, max_num, heuri):
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
 
+    closed_set = set()      
+    open_set = set([self])
     
-    
+    #the prev node
+    came_from = {}
+        
+    #current node depth
+    g_score = {self : 0}
+    #calculating cost for current node
+    f_score = {self : g_score[self] + heuristic(self, goalState)}
+        
+    while (len(open_set) != 0):
+#           print len(open_set),len(closed_set)
+        current = None
+        for node in open_set:
+            if current is None or f_score[node] < f_score[current]:
+                current = node
+        if current == goal:
+            return output(self, came_from, current)
+                
+        open_set.remove(current)
+        closed_set.add(current)
 
-    pass
+
+        for n in current.actions():
+            neighbor = n[0]
+#                print "Neighbor:\n",neighbor
+            if neighbor in closed_set:
+#                    print "Current:\n",current
+#                    print "Neighbor:\n",neighbor
+                continue
+            tentative_g_score = g_score[current] + 1
+                
+            if neighbor not in open_set or tentative_g_score < g_score[neighbor]:
+                came_from[neighbor] = (current, n[1])
+                g_score[neighbor] = tentative_g_score
+                f_score[neighbor] = g_score[neighbor] + heuristic(neighbor,goal)
+                if neighbor not in open_set:
+                    open_set.add(neighbor)
+
+    return "nil"
+

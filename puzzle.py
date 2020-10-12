@@ -198,7 +198,17 @@ def aStar(currentState, goalState, max_num, heuri):
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
 
-    
+    # first thing: deepcopy the current state, and goalstate
+    # gn = 1 
+    # second thing: while loop for when the puzzlesolved() is false 
+        # actions(current state ) 
+        # result() for each action so we can get the next state/children 
+        # calculate the cost (g(n) + h(n)) 
+        # order the different states (options) least to greatest based off of their costs 
+        # pick the least cost state 
+        # set the current state to the state that we chose in above step 
+        # we want check if the puzzle is solved, and if it is not then we go back to the top of loop 
+        # gn += 1 
     
 
     pass

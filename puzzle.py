@@ -234,7 +234,11 @@ def aStar(currentState, goalState, max_num, heuri):
     #the prev node
     came_from = {}
 
-    while (len(open_set) != 0):
+    while (len(open_set) != 0) and puzzleSolved != True:
+
+        curr= None
+        for n in open_set:
+            if 
         
 
     pass

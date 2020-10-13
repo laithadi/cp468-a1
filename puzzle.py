@@ -1,6 +1,7 @@
 import copy
 import random
 import numpy as np
+import math
 
 
 def goalState(size):
@@ -185,9 +186,16 @@ def h2(currentState, goalState):
 
 def h3(currentState, goalState):
     """
-    Havent decided yet on which heuristic to use 
+    Euclidean Distance
     """
-    pass
+    length = len(currentState)
+    euclidean = 0
+    for x in range(length):
+        for y in range(length):
+            (goalx, goaly) = get_index(goalState, currentState[x][y])
+            euclidean += math.sqrt((x-y)**(2) + (goalx - goaly)**(2))
+
+    return euclidean
 
 
 def aStar(currentState, goalState, max_num, heuri):

@@ -218,5 +218,23 @@ def aStar(currentState, goalState, max_num, heuri):
         # we want check if the puzzle is solved, and if it is not then we go back to the top of loop 
         # gn += 1 
     
+    curr_state= copy.deepcopy(currentState)
+    goal_state= copy.deepcopy(goalState)
+
+    count= 1
+
+    closed_set = set()      
+    open_set = set([self])
+    
+    #current node depth
+    g_score = {self : 0}
+    #calculating cost for current node
+    f_score = {self : g_score[self] + heuristic(self, goal_state)}
+
+    #the prev node
+    came_from = {}
+
+    while (len(open_set) != 0):
+        
 
     pass

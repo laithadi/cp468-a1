@@ -2,6 +2,8 @@ import puzzle as pz
 from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3
 import copy
 
+MAX = 100
+
 
 def main():
     puzzle_size = int(input(
@@ -37,24 +39,26 @@ def main():
             smallest_mt = h2_mt
         elif (h3_mt < h1_mt < h2_mt):
             smallest_mt = h3_mt
-            #     # create a OGpuzzle
-            #     OGpuzzle = pz.initialState(puzzle_size)
+        # use heuristic function with shortest path to do A* search
+        aStar(puzzle4Execute, goalState(puzzle_size), MAX, smallest_mt)
+        #     # create a OGpuzzle
+        #     OGpuzzle = pz.initialState(puzzle_size)
 
-            #     # solve the puzzle
-            #     while (not gameOver):
-            #         # deepcopy the OGpuzzle
+        #     # solve the puzzle
+        #     while (not gameOver):
+        #         # deepcopy the OGpuzzle
 
-            #         # heuristic 1
+        #         # heuristic 1
 
-            #     while (not gameOver):
-            #         # deepcopy the OGpuzzle
+        #     while (not gameOver):
+        #         # deepcopy the OGpuzzle
 
-            #         # heuristic 2
+        #         # heuristic 2
 
-            #     while (not gameOver):
-            #         # deepcopy the OGpuzzle
+        #     while (not gameOver):
+        #         # deepcopy the OGpuzzle
 
-            #         # heuristic 2
+        #         # heuristic 2
 
         j += 1
 

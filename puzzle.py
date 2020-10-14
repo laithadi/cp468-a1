@@ -198,7 +198,7 @@ def h3(currentState, goalState):
     return euclidean
 
 
-def aStar(currentState, goalState, max_num, heuri):
+def aStar(currentState, goalState, max_num, heuristic):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 
@@ -221,24 +221,33 @@ def aStar(currentState, goalState, max_num, heuri):
     curr_state= copy.deepcopy(currentState)
     goal_state= copy.deepcopy(goalState)
 
+    g= 0
+    h= 0 
+    f= 0
+
     count= 1
 
+    node_start= Node(None, curr_state)
+    node_start.g= 
+        
+    
+    '''
     closed_set = set()      
     open_set = set([self])
     
-    #current node depth
+    #current node depth, this is the lowest F cost square on the open list
     g_score = {self : 0}
-    #calculating cost for current node
+    #calculating cost for current node 
     f_score = {self : g_score[self] + heuristic(self, goal_state)}
 
     #the prev node
     came_from = {}
 
-    while (len(open_set) != 0) and puzzleSolved != True:
+    while (len(open_set) != 0):
 
         curr= None
         for n in open_set:
-            if 
-        
+           # h2.
+    '''       
 
-    pass
+   # pass

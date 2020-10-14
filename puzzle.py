@@ -223,14 +223,35 @@ def aStar(currentState, goalState, max_num, heuristic):
 
     g= 0
     h= 0 
-    f= 0
+    f= 0  
 
-    count= 1
-
+    # setting up the start nodes
     node_start= Node(None, curr_state)
-    node_start.g= 
-        
+    node_start.g= node_start.h = node_start.f = 0 
     
+    # setting up the end nodes
+    node_end= Node(Node, goal_state)
+    node_end.g = node_end.h = node_end.f = 0 
+
+    #Making the intial open and closed sets/lists
+    open_set = []
+    closed_set=[]
+
+    #adding the starting node to our open set list
+    open_set.append(node_start)
+
+    #Iterating thru the list
+    while len(open_set) > 0:
+
+        #Geting the curr node 
+         curr_state= open_set[0]
+         count=0 
+
+         for index, item in enumerate(open_set):
+             if item.f < curr_state.f:
+                 curr_state
+
+
     '''
     closed_set = set()      
     open_set = set([self])

@@ -2,6 +2,8 @@ import puzzle as pz
 from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3
 import copy
 
+MAX = 100
+
 
 def main():
     puzzle_size = int(input(
@@ -31,30 +33,32 @@ def main():
         # if(not gameOver):
             h3_mt = h3(puzzle4Execute, goalState(puzzle_size))
         # check which heuristic function has least misplaced Tiles
-        if (h1 < h2 < h3):
-            smallest_mt = h1
-        elif (h2 < h1 < h3):
-            smallest_mt = h2
-        elif (h3 < h1 < h2):
-            smallest_mt = h3
-            #     # create a OGpuzzle
-            #     OGpuzzle = pz.initialState(puzzle_size)
+        if (h1_mt < h2_mt < h3_mt):
+            smallest_mt = h1_mt
+        elif (h2_mt < h1_mt < h3_mt):
+            smallest_mt = h2_mt
+        elif (h3_mt < h1_mt < h2_mt):
+            smallest_mt = h3_mt
+        # use heuristic function with shortest path to do A* search
+        aStar(puzzle4Execute, goalState(puzzle_size), MAX, smallest_mt)
+        #     # create a OGpuzzle
+        #     OGpuzzle = pz.initialState(puzzle_size)
 
-            #     # solve the puzzle
-            #     while (not gameOver):
-            #         # deepcopy the OGpuzzle
+        #     # solve the puzzle
+        #     while (not gameOver):
+        #         # deepcopy the OGpuzzle
 
-            #         # heuristic 1
+        #         # heuristic 1
 
-            #     while (not gameOver):
-            #         # deepcopy the OGpuzzle
+        #     while (not gameOver):
+        #         # deepcopy the OGpuzzle
 
-            #         # heuristic 2
+        #         # heuristic 2
 
-            #     while (not gameOver):
-            #         # deepcopy the OGpuzzle
+        #     while (not gameOver):
+        #         # deepcopy the OGpuzzle
 
-            #         # heuristic 2
+        #         # heuristic 2
 
         j += 1
 

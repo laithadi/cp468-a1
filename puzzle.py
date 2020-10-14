@@ -1,6 +1,7 @@
 import copy
 import random
 import numpy as np
+import math
 
 
 def goalState(size):
@@ -185,12 +186,19 @@ def h2(currentState, goalState):
 
 def h3(currentState, goalState):
     """
-    Havent decided yet on which heuristic to use 
+    Euclidean Distance
     """
-    pass
+    length = len(currentState)
+    euclidean = 0
+    for x in range(length):
+        for y in range(length):
+            (goalx, goaly) = get_index(goalState, currentState[x][y])
+            euclidean += math.sqrt((x-y)**(2) + (goalx - goaly)**(2))
+
+    return euclidean
 
 
-def aStar(currentState, goalState, max_num, heuri):
+def aStar(currentState, goalState, max_num, heuristic):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 
@@ -210,5 +218,57 @@ def aStar(currentState, goalState, max_num, heuri):
         # we want check if the puzzle is solved, and if it is not then we go back to the top of loop 
         # gn += 1 
     
+    curr_state= copy.deepcopy(currentState)
+    goal_state= copy.deepcopy(goalState)
 
-    pass
+    g= 0
+    h= 0 
+    f= 0  
+
+    # setting up the start nodes
+    node_start= Node(None, curr_state)
+    node_start.g= node_start.h = node_start.f = 0 
+    
+    # setting up the end nodes
+    node_end= Node(Node, goal_state)
+    node_end.g = node_end.h = node_end.f = 0 
+
+    #Making the intial open and closed sets/lists
+    open_set = []
+    closed_set=[]
+
+    #adding the starting node to our open set list
+    open_set.append(node_start)
+
+    #Iterating thru the list
+    while len(open_set) > 0:
+
+        #Geting the curr node 
+         curr_state= open_set[0]
+         count=0 
+
+         for index, item in enumerate(open_set):
+             if item.f < curr_state.f:
+                 curr_state
+
+
+    '''
+    closed_set = set()      
+    open_set = set([self])
+    
+    #current node depth, this is the lowest F cost square on the open list
+    g_score = {self : 0}
+    #calculating cost for current node 
+    f_score = {self : g_score[self] + heuristic(self, goal_state)}
+
+    #the prev node
+    came_from = {}
+
+    while (len(open_set) != 0):
+
+        curr= None
+        for n in open_set:
+           # h2.
+    '''       
+
+   # pass

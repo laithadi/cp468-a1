@@ -43,6 +43,18 @@ print(h1Value)
 # print(h2Value)
 print("---------------------------------------------\n")
 
+# testing h2
+print("This is the heuristic value (h2): ")
+h2Value = pz.h2(initialState, goalState)
+print(h2Value)
+print("---------------------------------------------\n")
+
+# testing h3
+print("This is the heuristic value (h3): ")
+h3Value = pz.h3(initialState, goalState)
+print(h3Value)
+print("---------------------------------------------\n")
+
 # testing puzzleSolved
 print("This tells us if the puzzle is solved or not: ")
 pzSolved = pz.puzzleSolved(initialState, goalState)

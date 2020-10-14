@@ -57,12 +57,16 @@ print("---------------------------------------------\n")
 
 #implementing A*
 initialState= initialState.tolist()
-pz.aStar(initialState, goalState)
+#pz.aStar(initialState, goalState, func='h1')
+test_initial= [[1,8,2],[None,4,3],[7,6,5]]
+test_goal= [[1,2,3],[4,5,6],[7,8,None]]
+pz.aStar(test_initial,test_goal,func='h1')
 
 # testing puzzleSolved
 print("This tells us if the puzzle is solved or not: ")
 pzSolved = pz.puzzleSolved(initialState, goalState)
 pzSolved1 = pz.puzzleSolved(goalState, goalState)
+
 print(pzSolved)
 print(pzSolved1)
 print("---------------------------------------------\n")

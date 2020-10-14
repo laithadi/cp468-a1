@@ -155,8 +155,9 @@ def h1(currentState, goalState):
     misplacedTiles = 0
     for i in range(0, length):
         for j in range(0, length):
-            if (currentState[i][j] != goalState[i][j]):
-                misplacedTiles += 1
+            if currentState[i][j] != None:
+                if (currentState[i][j] != goalState[i][j]):
+                    misplacedTiles += 1
 
     return misplacedTiles
 
@@ -178,6 +179,8 @@ def h2(currentState, goalState):
 
     for x in range(length):
         for y in range(length):
+            #the if statement was to ignore the empty tiles, but h2 is good as it needs those tiles in its computation.
+            # if currentState[x][y] != 0 or currentState[x][y] != None:
             (goalx, goaly) = get_index(goalState, currentState[x][y])
             manhatton += abs(x - goalx) + abs(y - goaly)
 
@@ -274,7 +277,7 @@ def aStar(currentState, goalState, max_num, heuristic):
    # pass
 '''
 
-def aStar(currentState, goalState):
+def aStar(currentState, goalState, func='h2'):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 
@@ -327,6 +330,8 @@ def aStar(currentState, goalState):
             
             if new_node not in tree: # check whether is this arrangement have already been done
                 f_score = h2(new_node, goalState) + g_score
+                if func == 'h1':
+                    f_score = h1(new_node, goalState) + g_score
             
                 child_nodes.append(new_node)
                 child_nodes_fScores.append(f_score)
@@ -341,6 +346,8 @@ def aStar(currentState, goalState):
             
             if new_node not in tree: # check whether is this arrangement have already been done
                 f_score = h2(new_node, goalState) + g_score
+                if func == 'h1':
+                    f_score = h1(new_node, goalState) + g_score
             
                 child_nodes.append(new_node)
                 child_nodes_fScores.append(f_score)
@@ -355,6 +362,8 @@ def aStar(currentState, goalState):
 
             if new_node not in tree: # check whether is this arrangement have already been done
                 f_score = h2(new_node, goalState) + g_score
+                if func == 'h1':
+                    f_score = h1(new_node, goalState) + g_score
             
                 child_nodes.append(new_node)
                 child_nodes_fScores.append(f_score)
@@ -369,6 +378,8 @@ def aStar(currentState, goalState):
             
             if new_node not in tree: # check whether is this arrangement have already been done
                 f_score = h2(new_node, goalState) + g_score
+                if func == 'h1':
+                    f_score = h1(new_node, goalState) + g_score
             
                 child_nodes.append(new_node)
                 child_nodes_fScores.append(f_score)
@@ -377,8 +388,10 @@ def aStar(currentState, goalState):
         try:
             currentState = child_nodes[child_nodes_fScores.index(min(child_nodes_fScores))]
         except ValueError:
-            print('Unsolvable puzzle, max depth reached')
-            break
+            print('Unsolvable puzzle, the max depth has been reached')
+            print('Depth: ' + str(g_score))
+            return False
         print(currentState)
         tree.append(currentState)
-    print(g_score)
+    print('Depth: ' + str(g_score))
+    return True

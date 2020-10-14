@@ -55,6 +55,10 @@ h3Value = pz.h3(initialState, goalState)
 print(h3Value)
 print("---------------------------------------------\n")
 
+#implementing A*
+initialState= initialState.tolist()
+pz.aStar(initialState, goalState)
+
 # testing puzzleSolved
 print("This tells us if the puzzle is solved or not: ")
 pzSolved = pz.puzzleSolved(initialState, goalState)

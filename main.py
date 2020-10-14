@@ -41,24 +41,6 @@ def main():
             smallest_mt = h3_mt
         # use heuristic function with shortest path to do A* search
         aStar(puzzle4Execute, goalState(puzzle_size), MAX, smallest_mt)
-        #     # create a OGpuzzle
-        #     OGpuzzle = pz.initialState(puzzle_size)
-
-        #     # solve the puzzle
-        #     while (not gameOver):
-        #         # deepcopy the OGpuzzle
-
-        #         # heuristic 1
-
-        #     while (not gameOver):
-        #         # deepcopy the OGpuzzle
-
-        #         # heuristic 2
-
-        #     while (not gameOver):
-        #         # deepcopy the OGpuzzle
-
-        #         # heuristic 2
 
         j += 1
 

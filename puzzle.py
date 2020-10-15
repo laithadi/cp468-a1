@@ -178,15 +178,10 @@ def h2(currentState, goalState):
 
     for x in range(length):
         for y in range(length):
-<<<<<<< Updated upstream
-            (goalx, goaly) = get_index(goalState, currentState[x][y])
-            manhatton += abs(x - goalx) + abs(y - goaly)
-=======
             #to ignore the empty tile
             if currentState[x][y] != None or currentState[x][y] != 0:
                 (goalx, goaly) = get_index(goalState, currentState[x][y])
                 manhatton += abs(x - goalx) + abs(y - goaly)
->>>>>>> Stashed changes
 
     return manhatton
 
@@ -304,7 +299,7 @@ def aStar(currentState, goalState, MAX):
 
         blank_pos = get_index(currentState, None) # get the blank tile pos, might be 0 or None
         if blank_pos == (-1, -1):
-            blank_pos = get_index(currentState, 0)
+            blank_pos = get_index(currentState[0], 0)
         # add depth
         g_score += 1
         

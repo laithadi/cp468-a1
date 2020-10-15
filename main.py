@@ -24,10 +24,10 @@ def main():
         # run three different heuristic functions
         if(not gameOver):
             h1_mt = h1(puzzle4Execute, goalState(puzzle_size))
-        #gameOver = False
+        # gameOver = False
         # if(not gameOver):
             h2_mt = h2(puzzle4Execute, goalState(puzzle_size))
-        #gameOver = False
+        # gameOver = False
         # if(not gameOver):
             h3_mt = h3(puzzle4Execute, goalState(puzzle_size))
         # check which heuristic function has least misplaced Tiles
@@ -52,18 +52,32 @@ def main():
     if puzzle_size == 8:
         for i in range(3):
             print("|{}|{}|{}|".format(
-                puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2]))
+                astar1puzzle[i][0], astar1puzzle[i][1], astar1puzzle[i][2]))
     elif puzzle_size == 15:
         for i in range(4):
             print("|{}|{}|{}|{}|".format(
-                puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3]))
+                astar1puzzle[i][0], astar1puzzle[i][1], astar1puzzle[i][2], astar1puzzle[i][3]))
     elif puzzle_size == 24:
         for i in range(4):
             print("|{}|{}|{}|{}|{}|".format(
-                puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
+                astar1puzzle[i][0], astar1puzzle[i][1], astar1puzzle[i][2], astar1puzzle[i][3], astar1puzzle[i][4]))
 
     print("-------------")
+    print("Show Table...")
+    print("-------------")
+    if puzzle_size == 8:
+        for i in range(3):
+            print("|{}|{}|{}|".format(
+                astar2puzzle[i][0], astar2puzzle[i][1], astar2puzzle[i][2]))
+    elif puzzle_size == 15:
+        for i in range(4):
+            print("|{}|{}|{}|{}|".format(
+                astar2puzzle[i][0], astar2puzzle[i][1], astar2puzzle[i][2], astar2puzzle[i][3]))
+    elif puzzle_size == 24:
+        for i in range(4):
+            print("|{}|{}|{}|{}|{}|".format(
 
+    print("-------------")
 
 if __name__ == "__main__":
     main()

@@ -2,8 +2,6 @@ import puzzle as pz
 from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3, aStar
 import copy
 
-MAX = 100
-
 
 def main():
     puzzle_size = int(input(
@@ -40,7 +38,7 @@ def main():
         elif (h3_mt < h1_mt < h2_mt):
             smallest_mt = h3_mt
         # use heuristic function with shortest path to do A* search
-        aStar(puzzle4Execute, goalState, puzzle_size)
+        aStar(puzzle4Execute, goalState(puzzle_size), puzzle_size)
 
         j += 1
 

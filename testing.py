@@ -1,147 +1,84 @@
 import puzzle as pz
-PUZZLESIZE1 = 8
-PUZZLESIZE2 = 15
-PUZZLESIZE3 = 24
+
+PUZZLESIZE = 15
 
 # testing goalState
-goalState1 = pz.goalState(PUZZLESIZE1)
-print("This is the GOALSTATE for 8: ")
-print(goalState1)
+goalState = pz.goalState(PUZZLESIZE)
+print("This is the GOALSTATE: ")
+print(goalState)
 print("---------------------------------------------\n")
-goalState2 = pz.goalState(PUZZLESIZE2)
-print("This is the GOALSTATE for 15: ")
-print(goalState2)
-print("---------------------------------------------\n")
-goalState3 = pz.goalState(PUZZLESIZE3)
-print("This is the GOALSTATE for 24: ")
-print(goalState3)
-print("---------------------------------------------\n")
+
 # testing initialState
-initialState1 = pz.initialState(PUZZLESIZE1)
-print("This is the INITIAL STATE for 8")
-print(initialState1)
+initialState = pz.initialState(PUZZLESIZE)
+print("This is the INITIAL STATE")
+print(initialState)
 print("---------------------------------------------\n")
-initialState2 = pz.initialState(PUZZLESIZE2)
-print("This is the INITIAL STATE for 15")
-print(initialState2)
-print("---------------------------------------------\n")
-initialState3 = pz.initialState(PUZZLESIZE3)
-print("This is the INITIAL STATE for 24")
-print(initialState3)
-print("---------------------------------------------\n")
+
 # testing blankSpot
-blankSpot1 = pz.blankSpot(initialState1)
-print("This is the coordinates to the BLANK SPOT in the puzzle 8: ")
-print(blankSpot1)
+blankSpot = pz.blankSpot(initialState)
+print("This is the coordinates to the BLANK SPOT in the puzzle: ")
+print(blankSpot)
 print("---------------------------------------------\n")
-blankSpot2 = pz.blankSpot(initialState2)
-print("This is the coordinates to the BLANK SPOT in the puzzle 15: ")
-print(blankSpot2)
-print("---------------------------------------------\n")
-blankSpot3 = pz.blankSpot(initialState3)
-print("This is the coordinates to the BLANK SPOT in the puzzle 24: ")
-print(blankSpot3)
-print("---------------------------------------------\n")
+
 # testing actions
-acts1 = pz.actions(initialState1)
-print("For puzzle 8, These are the set of coordinates we can move (interchange) with the blank spot. \nthe different moves the AI can take: ")
-print(acts1)
+acts = pz.actions(initialState)
+print("These are the set of coordinates we can move (interchange) with the blank spot. \nthe different moves the AI can take: ")
+print(acts)
 print("---------------------------------------------\n")
-acts2 = pz.actions(initialState2)
-print("For puzzle 15, These are the set of coordinates we can move (interchange) with the blank spot. \nthe different moves the AI can take: ")
-print(acts2)
-print("---------------------------------------------\n")
-acts3 = pz.actions(initialState3)
-print("For puzzle 8, These are the set of coordinates we can move (interchange) with the blank spot. \nthe different moves the AI can take: ")
-print(acts3)
-print("---------------------------------------------\n")
-# testing result
-for act in acts1:
-    print("For puzzle 8, This is the result of making a move from the list of actions we can take from above: ")
-    resultPz1 = pz.result(initialState1, act)
-    print(resultPz1)
+
+
+# testing result 
+for act in acts:
+    print("This is the result of making a move from the list of actions we can take from above: ")
+    resultPz = pz.result(initialState, act)
+    print(resultPz)
     print('\n')
 print("---------------------------------------------\n")
-for act in acts2:
-    print("For puzzle 15, This is the result of making a move from the list of actions we can take from above: ")
-    resultPz2 = pz.result(initialState2, act)
-    print(resultPz2)
-    print('\n')
-print("---------------------------------------------\n")
-for act in acts3:
-    print("For puzzle 24, This is the result of making a move from the list of actions we can take from above: ")
-    resultPz3 = pz.result(initialState3, act)
-    print(resultPz3)
-    print('\n')
-print("---------------------------------------------\n")
+
 # testing h1
-print("This is the heuristic value (h1) for puzzle 8: ")
-h1Value1 = pz.h1(initialState1, goalState1)
+print("This is the heuristic value (h1): ")
+h1Value = pz.h1(initialState, goalState)
 #h2Value = pz.h1(resultPz, goalState)
-print(h1Value1)
+print(h1Value)
 # print(h2Value)
 print("---------------------------------------------\n")
-print("This is the heuristic value (h1) for puzzle 15: ")
-h1Value2 = pz.h1(initialState2, goalState2)
-#h2Value = pz.h1(resultPz, goalState)
-print(h1Value2)
-# print(h2Value)
-print("---------------------------------------------\n")
-print("This is the heuristic value (h1) for puzzle 24: ")
-h1Value3 = pz.h1(initialState3, goalState3)
-#h2Value = pz.h1(resultPz, goalState)
-print(h1Value3)
-# print(h2Value)
-print("---------------------------------------------\n")
+
 # testing h2
-print("This is the heuristic value (h2)for puzzle 8: ")
-h2Value1 = pz.h2(initialState1, goalState1)
-print(h2Value1)
+print("This is the heuristic value (h2): ")
+h2Value = pz.h2(initialState, goalState)
+print(h2Value)
 print("---------------------------------------------\n")
-print("This is the heuristic value (h2)for puzzle 15: ")
-h2Value2 = pz.h2(initialState2, goalState2)
-print(h2Value2)
-print("---------------------------------------------\n")
-print("This is the heuristic value (h2)for puzzle 24: ")
-h2Value3 = pz.h2(initialState3, goalState3)
-print(h2Value3)
-print("---------------------------------------------\n")
+
 # testing h3
-print("This is the heuristic value (h3) for puzzle 8: ")
-h3Value1 = pz.h3(initialState1, goalState1)
-print(h3Value1)
+print("This is the heuristic value (h3): ")
+h3Value = pz.h3(initialState, goalState)
+print(h3Value)
 print("---------------------------------------------\n")
-print("This is the heuristic value (h3) for puzzle 15: ")
-h3Value2 = pz.h3(initialState2, goalState2)
-print(h3Value2)
-print("---------------------------------------------\n")
-print("This is the heuristic value (h3) for puzzle 24: ")
-h3Value3 = pz.h3(initialState3, goalState3)
-print(h3Value3)
-print("---------------------------------------------\n")
-print("---------------------------------------------\n")
-print('A* tests')
-# implementing A*
-initialState = initialState1.tolist()
-#pz.aStar(initialState, goalState, func='h1')
-test_initial = [[1, 8, 2], [None, 4, 3], [7, 6, 5]]
-test_goal = [[1, 2, 3], [4, 5, 6], [7, 8, None]]
-pz.aStar(test_initial, test_goal, 8)
+
 
 print("---------------------------------------------\n")
-print("This is goal state:", goalState1)
+print('A* tests')
+#implementing A*
+initialState= initialState.tolist()
+#pz.aStar(initialState, goalState, func='h1')
+test_initial= [[1,8,2],[None,4,3],[7,6,5]]
+test_goal= [[1,2,3],[4,5,6],[7,8,None]]
+pz.aStar(test_initial,test_goal,8)
+
+print("---------------------------------------------\n")
+print("This is goal state:", goalState)
 print("This is initial state: ", initialState)
 
 print("---------------------------------------------\n")
 print('The puzzle')
-actuala1 = pz.aStar(initialState, goalState1, PUZZLESIZE1)
-print(actuala1)
+actuala= pz.aStar(initialState,goalState,PUZZLESIZE)
+print(actuala)
 
 
 # testing puzzleSolved
 print("This tells us if the puzzle is solved or not: ")
-pzSolved = pz.puzzleSolved(initialState, goalState1)
-pzSolved1 = pz.puzzleSolved(goalState1, goalState1)
+pzSolved = pz.puzzleSolved(initialState, goalState)
+pzSolved1 = pz.puzzleSolved(goalState, goalState)
 
 print(pzSolved)
 print(pzSolved1)

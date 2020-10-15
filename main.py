@@ -1,6 +1,8 @@
 import puzzle as pz
-from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3, aStar1, aStar2
+from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3, aStar
 import copy
+
+MAX = 100
 
 
 def main():
@@ -38,10 +40,7 @@ def main():
         elif (h3_mt < h1_mt < h2_mt):
             smallest_mt = h3_mt
         # use heuristic function with shortest path to do A* search
-        astar1puzzle = aStar1(
-            puzzle4Execute, goalState(puzzle_size), puzzle_size)
-        astar2puzzle = aStar2(puzzle4Execute, goalState(
-            puzzle_size), puzzle_size, smallest_mt)
+        aStar(puzzle4Execute, goalState, puzzle_size)
 
         j += 1
 
@@ -61,8 +60,6 @@ def main():
         for i in range(4):
             print("|{}|{}|{}|{}|{}|".format(
                 puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
-
-    print("-------------")
 
 
 if __name__ == "__main__":

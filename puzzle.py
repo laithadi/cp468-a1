@@ -178,8 +178,10 @@ def h2(currentState, goalState):
 
     for x in range(length):
         for y in range(length):
-            (goalx, goaly) = get_index(goalState, currentState[x][y])
-            manhatton += abs(x - goalx) + abs(y - goaly)
+            # to ignore the empty tile
+            if currentState[x][y] != None or currentState[x][y] != 0:
+                (goalx, goaly) = get_index(goalState, currentState[x][y])
+                manhatton += abs(x - goalx) + abs(y - goaly)
 
     return manhatton
 

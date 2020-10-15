@@ -40,7 +40,7 @@ def main():
         elif (h3_mt < h1_mt < h2_mt):
             smallest_mt = h3_mt
         # use heuristic function with shortest path to do A* search
-        aStar(puzzle4Execute, goalState(puzzle_size), MAX, smallest_mt)
+        aStar(puzzle4Execute, goalState, puzzle_size)
 
         j += 1
 

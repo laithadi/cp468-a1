@@ -57,7 +57,10 @@ print("---------------------------------------------\n")
 
 
 print("---------------------------------------------\n")
+print(initialState)
+
 print('A* tests')
+
 #implementing A*
 initialState= initialState.tolist()
 #pz.aStar(initialState, goalState, func='h1')

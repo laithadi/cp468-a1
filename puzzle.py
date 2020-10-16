@@ -180,7 +180,7 @@ def h2(currentState, goalState):
     for x in range(length):
         for y in range(length):
             #to ignore the empty tile
-            if currentState[x][y] != None:
+            if currentState[x][y] != None or currentState[x][y] != 0:
                 (goalx, goaly) = get_index(goalState, currentState[x][y])
                 manhatton += abs(x - goalx) + abs(y - goaly)
 
@@ -302,6 +302,7 @@ def aStar(currentState, goalState, size):
 
         if blank_pos == (-1, -1):
             print('There is no None in the currentState')
+            blank_pos = get_index(currentState[0],0)
             return
 
         g_score = currentState[2]

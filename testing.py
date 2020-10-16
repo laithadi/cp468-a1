@@ -55,12 +55,28 @@ h3Value = pz.h3(initialState, goalState)
 print(h3Value)
 print("---------------------------------------------\n")
 
+
+print("---------------------------------------------\n")
+print(initialState)
+
+print('A* tests')
+
 #implementing A*
 initialState= initialState.tolist()
 #pz.aStar(initialState, goalState, func='h1')
 test_initial= [[1,8,2],[None,4,3],[7,6,5]]
 test_goal= [[1,2,3],[4,5,6],[7,8,None]]
-pz.aStar(test_initial,test_goal,func='h1')
+pz.aStar(test_initial,test_goal,8)
+
+print("---------------------------------------------\n")
+print("This is goal state:", goalState)
+print("This is initial state: ", initialState)
+
+print("---------------------------------------------\n")
+print('The puzzle')
+actuala= pz.aStar(initialState,goalState,PUZZLESIZE)
+print(actuala)
+
 
 # testing puzzleSolved
 print("This tells us if the puzzle is solved or not: ")

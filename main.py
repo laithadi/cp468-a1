@@ -8,19 +8,23 @@ MAX = 100
 def main():
     puzzle_size = int(input(
         "What size of puzzle you want to have? Enter 8, 15 or 24 Please: "))
+    #originalPuzzle= pz()
     # check if user input is 8/15/24, ask for input again if it is not
     while(puzzle_size != 8 and puzzle_size != 15 and puzzle_size != 24):
         puzzle_size = int(input(
             "What size of puzzle you want to have? Enter 8, 15 or 24 Please: "))
+    
     print("You choose {}-puzzle, now it is  time to create the puzzle for you...".format(puzzle_size))
-    originalPuzzle = pz.initialState(puzzle_size)
+
     print("Puzzle created...Show puzzle for you now...")
     # heuristic()
 
-    gameOver = puzzleSolved(originalPuzzle, goalState(puzzle_size))
     j = 0
     # execute 100 different random puzzles
     while (j != 100):
+        originalPuzzle = pz.initialState(puzzle_size)
+        gameOver = puzzleSolved(originalPuzzle, goalState(puzzle_size))
+
         # deepcopy original puzzle
         puzzle4Execute = copy.deepcopy(originalPuzzle)
         # run three different heuristic functions
@@ -40,7 +44,7 @@ def main():
         elif (h3_mt < h1_mt < h2_mt):
             smallest_mt = h3_mt
         # use heuristic function with shortest path to do A* search
-        aStar(puzzle4Execute, goalState(puzzle_size), MAX, smallest_mt)
+        aStar(puzzle4Execute, goalState, puzzle_size)
 
         j += 1
 

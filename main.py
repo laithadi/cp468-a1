@@ -19,27 +19,27 @@ def main():
     print("Puzzle created...Show puzzle for you now...")
     # heuristic()
 
-    j = 1
-    # execute 100 different random puzzles
-    while (j != 100):
+    # j = 1
+    # # execute 100 different random puzzles
+    # while (j != 100):
 
-        originalPuzzle = pz.initialState(puzzle_size)
-        goalPuzzle = pz.goalState(puzzle_size)
+    #     originalPuzzle = pz.initialState(puzzle_size)
+    #     goalPuzzle = pz.goalState(puzzle_size)
         
-        # heuristic 1 
-        h1_num_steps, h1_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
+    #     # heuristic 1 
+    #     h1_num_steps, h1_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
 
-        # heursitic 2 
-        h2_num_steps, h2_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
+    #     # heursitic 2 
+    #     h2_num_steps, h2_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
 
-        # heuristic 3 
-        h3_num_steps, h3_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
+    #     # heuristic 3 
+    #     h3_num_steps, h3_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
 
-        # list where we will store all the returned values 
+    #     # list where we will store all the returned values 
 
 
 
-        j += 1
+    #     j += 1
 
     # # format and display the table
 
@@ -47,16 +47,13 @@ def main():
     print("-------------")
     if puzzle_size == 8:
         for i in range(3):
-            print("|{}|{}|{}|".format(
-                # puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2]))
-    elif puzzle_size == 15:
+            print("|{}|{}|{}|".format())
+    if puzzle_size == 15:
         for i in range(4):
-            print("|{}|{}|{}|{}|".format(
-                 #puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3]))
-    elif puzzle_size == 24:
+            print("|{}|{}|{}|{}|".format())
+    if puzzle_size == 24:
         for i in range(4):
-            print("|{}|{}|{}|{}|{}|".format(
-                 #puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
+            print("|{}|{}|{}|{}|{}|".format())
 
 
 if __name__ == "__main__":

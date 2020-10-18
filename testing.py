@@ -66,14 +66,15 @@ print('A* tests')
 #pz.aStar(initialState, goalState, func='h1')
 # test_initial= [[1,8,2],[None,4,3],[7,6,5]]
 # test_goal= [[1,2,3],[4,5,6],[7,8,None]]
-temp = pz.aStar(initialState, goalState,8)
+
+#temp = pz.aStarh2(initialState, goalState,8)
 
 print("---------------------------------------------\n")
 print("---------------------------------------------\n")
 print("---------------------------------------------\n")
 print("This is goal state:", goalState)
 print("This is initial state: ", initialState)
-print(temp)
+#print(temp)
 print("---------------------------------------------\n")
 print("---------------------------------------------\n")
 print("---------------------------------------------\n")
@@ -93,7 +94,10 @@ print('The puzzle')
 # print(pzSolved1)
 # print("---------------------------------------------\n")
 print("h1 testaz")
-temp1 = pz.aStarh1(initialState, goalState,8)
+#temp1 = pz.aStarh2(initialState, goalState,8)
+
+print("h1 testaz")
+temp3 = pz.aStarh1(initialState, goalState,8)
 
 print("h3 testaz")
 #temp2 = pz.aStarh3(initialState, goalState,8)

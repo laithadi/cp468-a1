@@ -370,7 +370,7 @@ def aStarh2(currentState, goalState, size):
             new_node[blank_pos[0] + 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] + 1][blank_pos[1]]
             if new_node == goalState:
-                print(new_node)
+                #print(new_node)
                 print('Depth: ' + str(g_score))
                 print('Children visited: ' + str(visit))
                 return True
@@ -430,11 +430,11 @@ def aStarh1(currentState, goalState, size):
     while len(queue):
 
         currentState = queue.pop(0)
-        '''
-        for i in currentState[0]:
-            print(i)
-        print()
-        '''
+        
+        #for i in currentState[0]:
+        #    print(i)
+        #print()
+        
         tree.append(currentState[0])
 
         blank_pos = get_index(currentState[0], None) # get the blank tile pos, might be 0 or None

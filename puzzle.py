@@ -40,14 +40,21 @@ def initialState(size):
     Returns the initial state of the puzzle 
     """
     if size == 8:
-        arr = np.arange(9).reshape(3, 3).tolist()
+        arr = np.arange(9).reshape(3, 3)
         np.random.shuffle(arr)
+        arr = np.where(arr == 0, None, arr)
+        arr = arr.tolist()
+
     elif size == 15:
         arr = np.arange(16).reshape(4, 4).tolist()
         np.random.shuffle(arr)
+        arr = np.where(arr == 0, None, arr)
+        arr = arr.tolist()
     else:
         arr = np.arange(25).reshape(5, 5).tolist()
         np.random.shuffle(arr)
+        arr = np.where(arr == 0, None, arr)
+        arr = arr.tolist()
     return arr
 
 

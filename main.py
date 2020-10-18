@@ -52,11 +52,11 @@ def main():
     elif puzzle_size == 15:
         for i in range(4):
             print("|{}|{}|{}|{}|".format(
-                # puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3]))
+                 #puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3]))
     elif puzzle_size == 24:
         for i in range(4):
             print("|{}|{}|{}|{}|{}|".format(
-                # puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
+                 #puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
 
 
 if __name__ == "__main__":

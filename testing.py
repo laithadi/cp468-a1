@@ -64,9 +64,9 @@ print('A* tests')
 #implementing A*
 #initialState= initialState.tolist()
 #pz.aStar(initialState, goalState, func='h1')
-test_initial= [[1,8,2],[None,4,3],[7,6,5]]
-test_goal= [[1,2,3],[4,5,6],[7,8,None]]
-temp = pz.aStar(initialState,goalState,8)
+# test_initial= [[1,8,2],[None,4,3],[7,6,5]]
+# test_goal= [[1,2,3],[4,5,6],[7,8,None]]
+temp = pz.aStar(initialState, goalState,8)
 
 print("---------------------------------------------\n")
 print("---------------------------------------------\n")

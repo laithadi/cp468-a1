@@ -44,7 +44,8 @@ def main():
     print("------------------------------------")
     print("| puzzle # | num_steps | num_nodes |")
     for k in range(100):
-        print("| {} | h1 = {}, h2 = {}, h3 = {} | h1 = {}, h2 = {}, h3 = {} |")
+        print("| {} | h1 = {}, h2 = {}, h3 = {} | h1 = {}, h2 = {}, h3 = {} |".format(
+            k, h1_num_steps, h2_num_steps, h3_num_steps, h1_num_nodes, h2_num_nodes, h3_num_nodes))
     print("------------------------------------")
 
 

@@ -14,6 +14,9 @@ def main():
     print("You choose {}-puzzle, now it is  time to create the puzzle for you...".format(puzzle_size))
 
     print("Puzzle created...Show puzzle for you now...")
+    print("Show Table...")
+    print("------------------------------------")
+    print("| puzzle # | num_steps | num_nodes |")
     # heuristic()
     j = 1
     # # execute 100 different random puzzles
@@ -23,30 +26,25 @@ def main():
         goalPuzzle = pz.goalState(puzzle_size)
 
     #     # heuristic 1
-        h1_num_steps, h1_num_nodes = pz.aStar(
+        h1_num_steps, h1_num_nodes = pz.aStarh1(
             originalPuzzle, goalPuzzle, puzzle_size)
 
     #     # heursitic 2
-        h2_num_steps, h2_num_nodes = pz.aStar(
+        h2_num_steps, h2_num_nodes = pz.aStarh2(
             originalPuzzle, goalPuzzle, puzzle_size)
 
     #     # heuristic 3
-        h3_num_steps, h3_num_nodes = pz.aStar(
+        h3_num_steps, h3_num_nodes = pz.aStarh3(
             originalPuzzle, goalPuzzle, puzzle_size)
-
-    #     # list where we will store all the returned values
 
         j += 1
 
-    # # format and display the table
-
-    print("Show Table...")
-    print("------------------------------------")
-    print("| puzzle # | num_steps | num_nodes |")
-    for k in range(100):
         print("| {} | h1 = {}, h2 = {}, h3 = {} | h1 = {}, h2 = {}, h3 = {} |".format(
-            k, h1_num_steps, h2_num_steps, h3_num_steps, h1_num_nodes, h2_num_nodes, h3_num_nodes))
-    print("------------------------------------")
+            j, h1_num_steps, h2_num_steps, h3_num_steps, h1_num_nodes, h2_num_nodes, h3_num_nodes))
+        print("------------------------------------")
+
+        
+        
 
 
 if __name__ == "__main__":

@@ -92,3 +92,8 @@ print('The puzzle')
 # print(pzSolved)
 # print(pzSolved1)
 # print("---------------------------------------------\n")
+print("h1 testaz")
+temp1 = pz.aStarh1(initialState, goalState,8)
+
+print("h3 testaz")
+#temp2 = pz.aStarh3(initialState, goalState,8)

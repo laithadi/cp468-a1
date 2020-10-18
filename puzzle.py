@@ -295,17 +295,19 @@ def aStar(currentState, goalState, size):
     goalState = copy.deepcopy(goalState)
 
     tree = []
+    
+    visit= 0 
 
     queue= [currentState]
 
     while len(queue):
 
         currentState = queue.pop(0)
-
+        '''
         for i in currentState[0]:
             print(i)
         print()
-
+        '''
         tree.append(currentState[0])
 
         blank_pos = get_index(currentState[0], None) # get the blank tile pos, might be 0 or None
@@ -314,7 +316,7 @@ def aStar(currentState, goalState, size):
             print('There is no None in the currentState')
             blank_pos = get_index(currentState[0],0)
             return
-
+        # add count for where ever we expanded nodes (visited children)
         g_score = currentState[2]
         
         if blank_pos[1] > 0:
@@ -324,11 +326,13 @@ def aStar(currentState, goalState, size):
             if new_node == goalState:
                 print(new_node)
                 print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
                 return True
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
                 queue.append([new_node, f_score, g_score + 1])
+                visit += 1
         
         if blank_pos[1] < tb[size]:
             new_node = copy.deepcopy(currentState[0])
@@ -337,11 +341,13 @@ def aStar(currentState, goalState, size):
             if new_node == goalState:
                 print(new_node)
                 print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
                 return True
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
                 queue.append([new_node, f_score, g_score + 1])
+                visit += 1
         
         if blank_pos[0] > 0:
             new_node = copy.deepcopy(currentState[0])
@@ -350,11 +356,14 @@ def aStar(currentState, goalState, size):
             if new_node == goalState:
                 print(new_node)
                 print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
                 return True
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
                 queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+
 
         if blank_pos[0] < tb[size]:
             new_node = copy.deepcopy(currentState[0])
@@ -363,13 +372,270 @@ def aStar(currentState, goalState, size):
             if new_node == goalState:
                 print(new_node)
                 print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
                 return True
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
                 queue.append([new_node, f_score, g_score + 1])
+                visit += 1
         
         queue.sort(key=lambda x: x[1])
+
+
+
+def aStarh1(currentState, goalState, size):
+    """ 
+    h1  heuristic
+    Takes in the the currentState of the puzzle and solves it.
+    Returns: 
+        - numSteps : number of steps to find solution. Essentially the number of times we call result()
+        - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
+    """
+
+    # first thing: deepcopy the current state, and goalstate
+    # gn = 1 
+    # second thing: while loop for when the puzzlesolved() is false 
+        # actions(current state ) 
+        # result() for each action so we can get the next state/children 
+        # calculate the cost (g(n) + h(n)) 
+        # order the different states (options) least to greatest based off of their costs 
+        # pick the least cost state 
+        # set the current state to the state that we chose in above step 
+        # we want check if the puzzle is solved, and if it is not then we go back to the top of loop 
+        # gn += 1 
+    
+
+    tb = {
+        8 : 2,
+        15: 3,
+        24: 4,
+    }
+
+    #current node depth
+    g_score = 0
+
+    #calculating cost for current node
+    f_score = g_score + h1(currentState, goalState)
+
+    currentState = [copy.deepcopy(currentState), f_score, g_score]
+    goalState = copy.deepcopy(goalState)
+
+    tree = []
+    
+    visit= 0 
+
+    queue= [currentState]
+
+    while len(queue):
+
+        currentState = queue.pop(0)
+        '''
+        for i in currentState[0]:
+            print(i)
+        print()
+        '''
+        tree.append(currentState[0])
+
+        blank_pos = get_index(currentState[0], None) # get the blank tile pos, might be 0 or None
+
+        if blank_pos == (-1, -1):
+            print('There is no None in the currentState')
+            blank_pos = get_index(currentState[0],0)
+            return
+        # add count for where ever we expanded nodes (visited children)
+        g_score = currentState[2]
+        
+        if blank_pos[1] > 0:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0]][blank_pos[1] - 1], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] - 1]
+            visit += 1
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h1(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+        
+        if blank_pos[1] < tb[size]:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0]][blank_pos[1] + 1], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] + 1]
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h1(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+        
+        if blank_pos[0] > 0:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0] - 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] - 1][blank_pos[1]]
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h1(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+
+        if blank_pos[0] < tb[size]:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0] + 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] + 1][blank_pos[1]]
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h1(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+        
+        queue.sort(key=lambda x: x[1])
+
+
+
+def aStarh3(currentState, goalState, size):
+    """ 
+    h3  heuristic
+    Takes in the the currentState of the puzzle and solves it.
+    Returns: 
+        - numSteps : number of steps to find solution. Essentially the number of times we call result()
+        - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
+    """
+
+    # first thing: deepcopy the current state, and goalstate
+    # gn = 1 
+    # second thing: while loop for when the puzzlesolved() is false 
+        # actions(current state ) 
+        # result() for each action so we can get the next state/children 
+        # calculate the cost (g(n) + h(n)) 
+        # order the different states (options) least to greatest based off of their costs 
+        # pick the least cost state 
+        # set the current state to the state that we chose in above step 
+        # we want check if the puzzle is solved, and if it is not then we go back to the top of loop 
+        # gn += 1 
+    
+
+    tb = {
+        8 : 2,
+        15: 3,
+        24: 4,
+    }
+
+    #current node depth
+    g_score = 0
+
+    #calculating cost for current node
+    f_score = g_score + h3(currentState, goalState)
+
+    currentState = [copy.deepcopy(currentState), f_score, g_score]
+    goalState = copy.deepcopy(goalState)
+
+    tree = []
+    
+    visit= 0 
+
+    queue= [currentState]
+
+    while len(queue):
+
+        currentState = queue.pop(0)
+        '''
+        for i in currentState[0]:
+            print(i)
+        print()
+        '''
+        tree.append(currentState[0])
+
+        blank_pos = get_index(currentState[0], None) # get the blank tile pos, might be 0 or None
+
+        if blank_pos == (-1, -1):
+            print('There is no None in the currentState')
+            blank_pos = get_index(currentState[0],0)
+            return
+        # add count for where ever we expanded nodes (visited children)
+        g_score = currentState[2]
+        
+        if blank_pos[1] > 0:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0]][blank_pos[1] - 1], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] - 1]
+            visit += 1
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h3(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+        
+        if blank_pos[1] < tb[size]:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0]][blank_pos[1] + 1], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] + 1]
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h3(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+        
+        if blank_pos[0] > 0:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0] - 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] - 1][blank_pos[1]]
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h3(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+
+        if blank_pos[0] < tb[size]:
+            new_node = copy.deepcopy(currentState[0])
+            new_node[blank_pos[0] + 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
+                new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] + 1][blank_pos[1]]
+            if new_node == goalState:
+                print(new_node)
+                print('Depth: ' + str(g_score))
+                print('Children visited: ' + str(visit))
+                return True
+            if new_node not in tree: # check whether is this arrangement have already been done
+                # f_score = h2(new_node, goalState) + g_score
+                f_score = h3(new_node, goalState)
+                queue.append([new_node, f_score, g_score + 1])
+                visit += 1
+        
+        queue.sort(key=lambda x: x[1])
+    
 
 
 if __name__ == '__main__':

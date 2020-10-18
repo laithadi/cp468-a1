@@ -163,6 +163,9 @@ def h1(currentState, goalState):
 
 
 def get_index(array, value):
+
+    print(array)
+
     for i in range(len(array)):
         for j in range(len(array[i])):
             if array[i][j] == value:

@@ -77,6 +77,8 @@ def actions(puzzle):
     # find the blank spot
     rowcol = blankSpot(temp)
     row_blank, col_blank = rowcol[0], rowcol[1]
+    print(row_blank)
+    print(col_blank)
 
     # up
     # Exception has occurred: ValueError

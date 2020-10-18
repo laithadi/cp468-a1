@@ -1,7 +1,6 @@
 import puzzle as pz
 from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3, aStar
 import copy
-
 #MAX = 100
 
 

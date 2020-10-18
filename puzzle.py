@@ -258,7 +258,7 @@ def aStar(currentState, goalState, max_num, heuristic):
    # pass
 '''
 
-def aStar(currentState, goalState, size):
+def aStarh2(currentState, goalState, size):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 

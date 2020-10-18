@@ -63,11 +63,11 @@ def blankSpot(puzzle):
     returns the indix (i, j) of where the blank spot is 
     """
     temp = copy.deepcopy(puzzle)
-    length = len(temp) - 1
+    length = len(temp)
 
     for i in range(0, length):
         for j in range(0, length):
-            if temp[i][j] == 0:
+            if temp[i][j] == None:
                 return i, j
 
     return temp

@@ -19,32 +19,25 @@ def main():
     print("Puzzle created...Show puzzle for you now...")
     # heuristic()
 
-    j = 0
+    j = 1
     # execute 100 different random puzzles
     while (j != 100):
-        originalPuzzle = pz.initialState(puzzle_size)
-        gameOver = puzzleSolved(originalPuzzle, goalState(puzzle_size))
 
-        # deepcopy original puzzle
-        puzzle4Execute = copy.deepcopy(originalPuzzle)
-        # run three different heuristic functions
-        if(not gameOver):
-            h1_mt = h1(puzzle4Execute, goalState(puzzle_size))
-        #gameOver = False
-        # if(not gameOver):
-            h2_mt = h2(puzzle4Execute, goalState(puzzle_size))
-        #gameOver = False
-        # if(not gameOver):
-            h3_mt = h3(puzzle4Execute, goalState(puzzle_size))
-        # check which heuristic function has least misplaced Tiles
-        if (h1_mt < h2_mt < h3_mt):
-            smallest_mt = h1_mt
-        elif (h2_mt < h1_mt < h3_mt):
-            smallest_mt = h2_mt
-        elif (h3_mt < h1_mt < h2_mt):
-            smallest_mt = h3_mt
-        # use heuristic function with shortest path to do A* search
-        aStar(puzzle4Execute, goalState, puzzle_size)
+        originalPuzzle = pz.initialState(puzzle_size)
+        goalPuzzle = pz.goalState(puzzle_size)
+        
+        # heuristic 1 
+        h1_num_steps, h1_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
+
+        # heursitic 2 
+        h2_num_steps, h2_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
+
+        # heuristic 3 
+        h3_num_steps, h3_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, puzzle_size)
+
+        # list where we will store all the returned values 
+
+
 
         j += 1
 
@@ -55,16 +48,40 @@ def main():
     if puzzle_size == 8:
         for i in range(3):
             print("|{}|{}|{}|".format(
-                puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2]))
+                # puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2]))
     elif puzzle_size == 15:
         for i in range(4):
             print("|{}|{}|{}|{}|".format(
-                puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3]))
+                # puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3]))
     elif puzzle_size == 24:
         for i in range(4):
             print("|{}|{}|{}|{}|{}|".format(
-                puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
+                # puzzle4Execute[i][0], puzzle4Execute[i][1], puzzle4Execute[i][2], puzzle4Execute[i][3], puzzleCreated[i][4]))
 
 
 if __name__ == "__main__":
     main()
+
+
+
+        # gameOver = puzzleSolved(originalPuzzle, goalState(puzzle_size))
+        # # deepcopy original puzzle
+        # puzzle4Execute = copy.deepcopy(originalPuzzle)
+        # # run three different heuristic functions
+        # if(not gameOver):
+        #     h1_mt = h1(puzzle4Execute, goalState(puzzle_size))
+        # #gameOver = False
+        # # if(not gameOver):
+        #     h2_mt = h2(puzzle4Execute, goalState(puzzle_size))
+        # #gameOver = False
+        # # if(not gameOver):
+        #     h3_mt = h3(puzzle4Execute, goalState(puzzle_size))
+        # # check which heuristic function has least misplaced Tiles
+        # if (h1_mt < h2_mt < h3_mt):
+        #     smallest_mt = h1_mt
+        # elif (h2_mt < h1_mt < h3_mt):
+        #     smallest_mt = h2_mt
+        # elif (h3_mt < h1_mt < h2_mt):
+        #     smallest_mt = h3_mt
+        # # use heuristic function with shortest path to do A* search
+        # aStar(puzzle4Execute, goalState, puzzle_size)

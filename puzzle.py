@@ -324,10 +324,10 @@ def aStarh2(currentState, goalState, size):
             new_node[blank_pos[0]][blank_pos[1] - 1], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] - 1]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
@@ -339,10 +339,10 @@ def aStarh2(currentState, goalState, size):
             new_node[blank_pos[0]][blank_pos[1] + 1], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] + 1]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
@@ -354,10 +354,10 @@ def aStarh2(currentState, goalState, size):
             new_node[blank_pos[0] - 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] - 1][blank_pos[1]]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
@@ -371,9 +371,9 @@ def aStarh2(currentState, goalState, size):
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] + 1][blank_pos[1]]
             if new_node == goalState:
                 #print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h2(new_node, goalState)
@@ -452,10 +452,10 @@ def aStarh1(currentState, goalState, size):
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] - 1]
             visit += 1
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h1(new_node, goalState)
@@ -467,10 +467,10 @@ def aStarh1(currentState, goalState, size):
             new_node[blank_pos[0]][blank_pos[1] + 1], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] + 1]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h1(new_node, goalState)
@@ -482,10 +482,10 @@ def aStarh1(currentState, goalState, size):
             new_node[blank_pos[0] - 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] - 1][blank_pos[1]]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h1(new_node, goalState)
@@ -497,10 +497,10 @@ def aStarh1(currentState, goalState, size):
             new_node[blank_pos[0] + 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] + 1][blank_pos[1]]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit 
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h1(new_node, goalState)
@@ -579,10 +579,10 @@ def aStarh3(currentState, goalState, size):
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] - 1]
             visit += 1
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h3(new_node, goalState)
@@ -594,10 +594,10 @@ def aStarh3(currentState, goalState, size):
             new_node[blank_pos[0]][blank_pos[1] + 1], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0]][blank_pos[1] + 1]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h3(new_node, goalState)
@@ -609,10 +609,10 @@ def aStarh3(currentState, goalState, size):
             new_node[blank_pos[0] - 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] - 1][blank_pos[1]]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h3(new_node, goalState)
@@ -624,10 +624,10 @@ def aStarh3(currentState, goalState, size):
             new_node[blank_pos[0] + 1][blank_pos[1]], new_node[blank_pos[0]][blank_pos[1]] =\
                 new_node[blank_pos[0]][blank_pos[1]],  new_node[blank_pos[0] + 1][blank_pos[1]]
             if new_node == goalState:
-                print(new_node)
-                print('Depth: ' + str(g_score))
-                print('Children visited: ' + str(visit))
-                return True
+                # print(new_node)
+                # print('Depth: ' + str(g_score))
+                # print('Children visited: ' + str(visit))
+                return g_score, visit
             if new_node not in tree: # check whether is this arrangement have already been done
                 # f_score = h2(new_node, goalState) + g_score
                 f_score = h3(new_node, goalState)
@@ -638,7 +638,7 @@ def aStarh3(currentState, goalState, size):
     
 
 
-if __name__ == '__main__':
-    import time
-    result = aStar([[2, 1, 5, 8], [6, None, 4, 11], [9, 7, 3, 15], [13, 10, 12, 14]], [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, None]], 15)
-    # result = aStar([[1, 8, 2], [None, 4, 3], [7, 6, 5]], [[1, 2, 3], [4, 5, 6], [7, 8, None]], 8)
+# if __name__ == '__main__':
+#     import time
+#     result = aStar([[2, 1, 5, 8], [6, None, 4, 11], [9, 7, 3, 15], [13, 10, 12, 14]], [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, None]], 15)
+#     # result = aStar([[1, 8, 2], [None, 4, 3], [7, 6, 5]], [[1, 2, 3], [4, 5, 6], [7, 8, None]], 8)

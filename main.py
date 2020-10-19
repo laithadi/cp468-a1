@@ -1,5 +1,5 @@
 import puzzle as pz
-from puzzle import goalState, h1, puzzleSolved, h2, initialState, h3, aStar
+from puzzle import *
 
 
 def main():
@@ -15,11 +15,11 @@ def main():
 
     print("Puzzle created...Show puzzle for you now...")
     print("Show Table...")
-    print("------------------------------------")
-    print("| puzzle # | num_steps | num_nodes |")
+    print("----------------------------------------------------------------------------------------------------------------------------------")
+    print("|            puzzle #            |                   num_steps                   |                   num_nodes                   |")
     # heuristic()
-    j = 1
-    # # execute 100 different random puzzles
+    j = 0
+    # # execute 100 different random puzzles 47
     while (j != 100):
 
         originalPuzzle = pz.initialState(puzzle_size)
@@ -39,9 +39,9 @@ def main():
 
         j += 1
 
-        print("| {} | h1 = {}, h2 = {}, h3 = {} | h1 = {}, h2 = {}, h3 = {} |".format(
+        print("                {}                         h1 = {}, h2 = {}, h3 = {}                      h1 = {}, h2 = {}, h3 = {}           ".format(
             j, h1_num_steps, h2_num_steps, h3_num_steps, h1_num_nodes, h2_num_nodes, h3_num_nodes))
-        print("------------------------------------")
+        print("----------------------------------------------------------------------------------------------------------------------------------")
 
         
         

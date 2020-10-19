@@ -19,18 +19,23 @@ def main():
         # create the initial puzzle and goal puzzle 
         originalPuzzle = pz.initialState(puzzle_size)  
         goalPuzzle = pz.goalState(puzzle_size)  
-        # run the astar algo using the 3 different heurisitics 
-        h1_num_steps, h1_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h1')
-        h2_num_steps, h2_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h2')
-        h3_num_steps, h3_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h3')
-        # check if the puzzle was solved by all three heuristics 
-        if (h1_num_steps != 0) and (h2_num_steps != 0) and (h3_num_steps != 0):
+        # check if puzzle is solvable 
+        if pz.is_puzzle_solvable(originalPuzzle) == True: 
+            print("TRUE")
+            print(originalPuzzle)
+            # run the astar algo using the 3 different heurisitics 
+            h1_num_steps, h1_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h1')
+            h2_num_steps, h2_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h2')
+            h3_num_steps, h3_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h3')
             # increment the number of puzzles solved 
             j += 1 
             # print the results 
             print("                {}                         h1 = {}, h2 = {}, h3 = {}                      h1 = {}, h2 = {}, h3 = {}           ".format(
                 j, h1_num_steps, h2_num_steps, h3_num_steps, h1_num_nodes, h2_num_nodes, h3_num_nodes))
             print("----------------------------------------------------------------------------------------------------------------------------------")
-    
+
+        else:
+            print("FALSE")
+
 if __name__ == "__main__":
     main()

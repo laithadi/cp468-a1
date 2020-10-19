@@ -149,6 +149,15 @@ def puzzleSolved(puzzle, goalState):
     return solved
 
 
+def get_index(array, value):
+
+    for i in range(len(array)):
+        for j in range(len(array[i])):
+            if array[i][j] == value:
+                return (i, j)
+    return -1, -1
+
+
 def h1(currentState, goalState):
     """
     Takes current state and goal state of puzzle. Then calculates the number of misplaced tiles. 
@@ -167,17 +176,6 @@ def h1(currentState, goalState):
                     misplacedTiles += 1
 
     return misplacedTiles
-
-
-def get_index(array, value):
-
-    #print(array)
-
-    for i in range(len(array)):
-        for j in range(len(array[i])):
-            if array[i][j] == value:
-                return (i, j)
-    return -1, -1
 
 
 def h2(currentState, goalState):

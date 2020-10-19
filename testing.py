@@ -64,8 +64,8 @@ print('A* tests')
 #implementing A*
 #initialState= initialState.tolist()
 #pz.aStar(initialState, goalState, func='h1')
-# test_initial= [[1,8,2],[None,4,3],[7,6,5]]
-# test_goal= [[1,2,3],[4,5,6],[7,8,None]]
+test_initial= [[1,8,2],[None,4,3],[7,6,5]]
+test_goal= [[1,2,3],[4,5,6],[7,8,None]]
 
 #temp = pz.aStarh2(initialState, goalState,8)
 
@@ -94,10 +94,16 @@ print('The puzzle')
 # print(pzSolved1)
 # print("---------------------------------------------\n")
 print("h1 testaz")
-temp1 = pz.aStarh2(initialState, goalState, 8)
+#temp1 = pz.aStarh2(initialState, goalState, 8)
+
+tt1= pz.aStarh1(test_initial, test_goal, 8)
 
 print("h1 testaz")
-temp3 = pz.aStarh1(initialState, goalState, 8)
+#temp3 = pz.aStarh1(initialState, goalState, 8)
+tt2= pz.aStarh2(test_initial, test_goal, 8)
+
 
 print("h3 testaz")
-temp2 = pz.aStarh3(initialState, goalState, 8)
+#temp2 = pz.aStarh3(initialState, goalState, 8)
+tt3= pz.aStarh3(test_initial, test_goal, 8)
+

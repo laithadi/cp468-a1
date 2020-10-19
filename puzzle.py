@@ -208,53 +208,103 @@ def h3(currentState, goalState):
 
     return euclidean
 
-'''
-def aStar(currentState, goalState, max_num, heuristic):
+
+
+
+
+
+
+
+def aStar(currentState, goalState, heuristic):
     """ 
     Takes in the the currentState of the puzzle and solves it.
     Returns: 
         - numSteps : number of steps to find solution. Essentially the number of times we call result()
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
-    # first thing: deepcopy the current state, and goalstate
-    # gn = 1 
-    # second thing: while loop for when the puzzlesolved() is false 
-        # actions(current state ) 
-        # result() for each action so we can get the next state/children 
-        # calculate the cost (g(n) + h(n)) 
-        # order the different states (options) least to greatest based off of their costs 
-        # pick the least cost state 
-        # set the current state to the state that we chose in above step 
-        # we want check if the puzzle is solved, and if it is not then we go back to the top of loop 
-        # gn += 1 
     
-    curr_state= copy.deepcopy(currentState)
-    goal_state= copy.deepcopy(goalState)
-    g= 0
-    h= 0 
-    f= 0  
-    # setting up the start nodes
-    node_start= Node(None, curr_state)
-    node_start.g= node_start.h = node_start.f = 0 
-    
-    # setting up the end nodes
-    node_end= Node(Node, goal_state)
-    node_end.g = node_end.h = node_end.f = 0 
-    #Making the intial open and closed sets/lists
-    open_set = []
-    closed_set=[]
-    #adding the starting node to our open set list
-    open_set.append(node_start)
-    #Iterating thru the list
-    while len(open_set) > 0:
-        #Geting the curr node 
-         curr_state= open_set[0]
-         count=0 
-         for index, item in enumerate(open_set):
-             if item.f < curr_state.f:
-                 curr_state
-   # pass
-'''
+    curr_state = copy.deepcopy(currentState)
+    goal_state = copy.deepcopy(goalState) 
+
+    queue = [] 
+    visited = []
+
+    g_score = 0 
+    nodes_expanded = 0 
+
+    diction = {}
+    diction[999999] = curr_state 
+
+    while diction:
+        g_score += 1
+
+        if puzzleSolved(curr_state, goal_state): return g_score, nodes_expanded
+        acts = actions(curr_state)
+
+        for act in acts:
+            res_act = result(curr_state, act) 
+
+            if res_act not in visited:
+                visited.append(res_act)
+                nodes_expanded += 1
+
+                if heuristic == 'h1':
+                    res_act_score = int(g_score + h1(res_act, goal_state))
+                elif heuristic == 'h2': 
+                    res_act_score = int(g_score + h2(res_act, goal_state))
+                else:
+                    res_act_score = int(g_score + h3(res_act, goal_state))
+                # queue.append((res_act_score, res_act))
+                diction[res_act_score] = res_act
+
+        # queue.sort(key=lambda x:x[0], reverse=True)
+        temp = sorted(diction.keys()) 
+
+        curr_state = diction[temp[0]]
+        del diction[temp[0]]
+
+        # temp = queue.pop()
+        # temp = diction.pop()
+        # curr_state = temp[1] 
+        # print(curr_state)
+
+    return 0000, 0000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def aStarh2(currentState, goalState, size):
     """ 

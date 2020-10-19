@@ -171,7 +171,7 @@ def h1(currentState, goalState):
 
 def get_index(array, value):
 
-    print(array)
+    #print(array)
 
     for i in range(len(array)):
         for j in range(len(array[i])):
@@ -269,7 +269,7 @@ def aStarh2(currentState, goalState, size):
     # first thing: deepcopy the current state, and goalstate
     # gn = 1 
     # second thing: while loop for when the puzzlesolved() is false 
-        # actions(current state ) 
+        # actions(current state) 
         # result() for each action so we can get the next state/children 
         # calculate the cost (g(n) + h(n)) 
         # order the different states (options) least to greatest based off of their costs 

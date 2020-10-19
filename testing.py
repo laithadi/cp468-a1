@@ -94,10 +94,10 @@ print('The puzzle')
 # print(pzSolved1)
 # print("---------------------------------------------\n")
 print("h1 testaz")
-#temp1 = pz.aStarh2(initialState, goalState,8)
+temp1 = pz.aStarh2(initialState, goalState, 8)
 
 print("h1 testaz")
-temp3 = pz.aStarh1(initialState, goalState,8)
+temp3 = pz.aStarh1(initialState, goalState, 8)
 
 print("h3 testaz")
-#temp2 = pz.aStarh3(initialState, goalState,8)
+temp2 = pz.aStarh3(initialState, goalState, 8)

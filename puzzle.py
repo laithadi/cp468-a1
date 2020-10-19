@@ -12,7 +12,7 @@ def goalState(size):
         goalState = [
             [1, 2, 3],
             [4, 5, 6],
-            [7, 8, None]
+            [7, 8, 0]
         ]
 
     elif size == 15:
@@ -20,7 +20,7 @@ def goalState(size):
             [1, 2, 3, 4],
             [5, 6, 7, 8],
             [9, 10, 11, 12],
-            [13, 14, 15, None]
+            [13, 14, 15, 0]
         ]
 
     else:
@@ -29,7 +29,7 @@ def goalState(size):
             [6, 7, 8, 9, 10],
             [11, 12, 13, 14, 15],
             [16, 17, 18, 19, 20],
-            [21, 22, 23, 24, None]
+            [21, 22, 23, 24, 0]
         ]
 
     return goalState
@@ -41,7 +41,7 @@ def initialState(size):
     """
     if size == 8:
         arr = np.arange(9).reshape(3, 3)
-        arr = np.where(arr == 0, None, arr)
+        arr = np.where(arr == 0, 0, arr)
         arr = arr.ravel()
         np.random.shuffle(arr)
         arr = arr.reshape(3,3)
@@ -49,19 +49,76 @@ def initialState(size):
 
     elif size == 15:
         arr = np.arange(16).reshape(4, 4)
-        arr = np.where(arr == 0, None, arr)
+        arr = np.where(arr == 0, 0, arr)
         arr = arr. ravel()
         np.random.shuffle(arr)
         arr = arr.reshape(4,4)
         arr = arr.tolist()
     else:
         arr = np.arange(25).reshape(5, 5)
-        arr = np.where(arr == 0, None, arr)
+        arr = np.where(arr == 0, 0, arr)
         arr = arr.ravel()
         np.random.shuffle(arr)
         arr = arr.reshape(5,5)
         arr = arr.tolist()
     return arr
+
+
+def inversion(puzzle):
+    """
+    Gets the inversion of the puzzle
+    """
+    
+    size = len(puzzle)
+    inv_count = 0
+
+    for i in range(0, size - 1):
+        for j in range(1+i, size - 1):
+            if puzzle[j][i] > 0 and puzzle[j][i] > puzzle[i][j]:
+                inv_count += 1 
+
+    return inv_count
+
+
+def XPos(puzzle):
+    """
+    gets the position of the blank spot from the bottom 
+    """
+    size = len(puzzle)
+    for i in range(size-1, -1, -1):
+        for j in range(size-1, -1, -1):
+            if puzzle[i][j] == 0:
+                return size - i 
+
+
+def is_puzzle_solvable(puzzle):
+    """ 
+    Check if the puzzle is solvable or not. 
+    """
+
+    inv_count = inversion(puzzle)
+    size = len(puzzle) 
+
+    if size%2 == 0:
+
+        if inv_count % 2 == 0:
+            return False 
+        else:
+            return True  
+    
+    else:
+
+        blank = XPos(puzzle)
+        if blank%2 == 0:
+            if inv_count % 2 == 2:
+                return False 
+            else:
+                return True 
+        else:
+            if inv_count % 2 == 0:
+                return True
+            else:
+                return False 
 
 
 def blankSpot(puzzle):
@@ -73,12 +130,12 @@ def blankSpot(puzzle):
 
     for i in range(0, length):
         for j in range(0, length):
-            if temp[i][j] == None:
+            if temp[i][j] == 0:
                 return i, j
 
     return temp
 
-
+    
 def actions(puzzle):
     """
     Returns set of all possible actions available on the puzzle 
@@ -177,7 +234,7 @@ def h1(currentState, goalState):
     misplacedTiles = 0
     for i in range(0, length):
         for j in range(0, length):
-            if currentState[i][j] != None:
+            if currentState[i][j] != 0:
                 if (currentState[i][j] != goalState[i][j]):
                     misplacedTiles += 1
 
@@ -194,7 +251,7 @@ def h2(currentState, goalState):
     for x in range(length):
         for y in range(length):
             #to ignore the empty tile
-            if currentState[x][y] != None or currentState[x][y] != 0:
+            if currentState[x][y] != 0 or currentState[x][y] != 0:
                 (goalx, goaly) = get_index(goalState, currentState[x][y])
                 manhatton += abs(x - goalx) + abs(y - goaly)
 
@@ -232,12 +289,15 @@ def aStar(currentState, goalState, heuristic):
     g_score = 0 
     nodes_expanded = 0 
 
+    queue.append((99999, curr_state))
+    visited.append(curr_state)
+
     diction = {}
     diction[999999] = curr_state 
 
-    while diction:
+    while len(diction) != 0:
         g_score += 1
-
+        print(curr_state)
         if puzzleSolved(curr_state, goal_state): return g_score, nodes_expanded
         acts = actions(curr_state)
 
@@ -256,12 +316,12 @@ def aStar(currentState, goalState, heuristic):
                     res_act_score = int(g_score + h3(res_act, goal_state))
                 # queue.append((res_act_score, res_act))
                 diction[res_act_score] = res_act
+                # queue.sort(key=lambda x:x[0], reverse=True)
+                
 
-        # queue.sort(key=lambda x:x[0], reverse=True)
-        temp = sorted(diction.keys()) 
-
+        temp = sorted(diction.keys())
+       
         curr_state = diction[temp[0]]
-        del diction[temp[0]]
 
         # temp = queue.pop()
         # temp = diction.pop()

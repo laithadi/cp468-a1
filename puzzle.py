@@ -283,29 +283,35 @@ def aStar(currentState, goalState, heuristic):
     curr_state = copy.deepcopy(currentState)
     goal_state = copy.deepcopy(goalState) 
 
-    queue = [] 
     visited = []
 
     g_score = 0 
     nodes_expanded = 0 
 
-    queue.append((99999, curr_state))
-    visited.append(curr_state)
+    if heuristic == 'h1':
+        curr_state_score = int(g_score + h1(curr_state, goal_state))
+    elif heuristic == 'h2': 
+        curr_state_score = int(g_score + h2(curr_state, goal_state))
+    else:
+        curr_state_score = int(g_score + h3(curr_state, goal_state))
 
     diction = {}
-    diction[999999] = curr_state 
+    diction[curr_state_score] = curr_state 
+
 
     while len(diction) != 0:
         g_score += 1
         print(curr_state)
+
         if puzzleSolved(curr_state, goal_state): return g_score, nodes_expanded
-        acts = actions(curr_state)
 
-        for act in acts:
-            res_act = result(curr_state, act) 
 
-            if res_act not in visited:
-                visited.append(res_act)
+        if curr_state not in visited:
+            visited.append(curr_state)
+            acts = actions(curr_state)
+            for act in acts:
+                res_act = result(curr_state, act) 
+
                 nodes_expanded += 1
 
                 if heuristic == 'h1':
@@ -314,18 +320,15 @@ def aStar(currentState, goalState, heuristic):
                     res_act_score = int(g_score + h2(res_act, goal_state))
                 else:
                     res_act_score = int(g_score + h3(res_act, goal_state))
-                # queue.append((res_act_score, res_act))
+
+            
                 diction[res_act_score] = res_act
-                # queue.sort(key=lambda x:x[0], reverse=True)
-                
+      
+        temp = sorted(diction.keys(), reverse=True)
+        next_state = diction[temp[0]]
 
-        temp = sorted(diction.keys())
-       
-        curr_state = diction[temp[0]]
+        curr_state = next_state
 
-        # temp = queue.pop()
-        # temp = diction.pop()
-        # curr_state = temp[1] 
-        # print(curr_state)
+        del diction[temp[0]]
 
     return 0000, 0000

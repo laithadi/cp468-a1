@@ -15,16 +15,26 @@ t1 = [[1,8,2],[0,4,3],[7,6,5]]
 #         temp.append(temp1)
 
 g_s = [
-            [1, 2, 3, 4],
-            [5, 6, 7, 8],
-            [9, 10, 11, 12],
-            [13, 14, 15, 0]
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 0]
         ]
 
 # print(pz.h1(t1, g_s))
 # print(pz.h2(t1, g_s))
 # print(pz.h3(t1, g_s))
 
-print(pz.aStar(t, g_s, 'h2'))
+print(pz.aStar(t1, g_s, 'h2'))
 
+# dic = {}
 
+# dic[9999] = 'hi'
+
+# print(dic)
+# print(len(dic))
+
+# del dic[9999]
+
+# print(dic)
+
+# print(len(dic))

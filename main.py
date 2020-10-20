@@ -24,10 +24,10 @@ def main():
             # print("TRUE")
             # print(originalPuzzle)
             # run the astar algo using the 3 different heurisitics 
-            h1_num_steps, h1_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h1')
-            h2_num_steps, h2_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h2')
+            h1_num_steps, h1_num_nodes = 0,0
+            h2_num_steps, h2_num_nodes = 0,0
             h3_num_steps, h3_num_nodes = pz.aStar(originalPuzzle, goalPuzzle, 'h3')
-            if h1_num_nodes != 0 and h2_num_nodes != 0:
+            if h1_num_nodes != 0 and h2_num_nodes != 0 and h3_num_nodes != 0:
                 # increment the number of puzzles solved 
                 j += 1 
                 # print the results 

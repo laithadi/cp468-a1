@@ -2,6 +2,7 @@ import copy
 import random
 import numpy as np
 import math
+import collections
 
 
 
@@ -300,28 +301,25 @@ def aStar(currentState, goalState, heuristic):
     while len(diction) != 0:
         g_score += 1
         # print(curr_state)
-        # print()
         if puzzleSolved(curr_state, goal_state): return g_score, nodes_expanded
         acts = actions(curr_state)
 
         for act in acts:
             res_act = result(curr_state, act) 
-            if puzzleSolved(res_act, goal_state): return g_score, nodes_expanded
-        
-            nodes_expanded += 1
-
-            if heuristic == 'h1':
-                res_act_score = int(g_score + h1(res_act, goal_state))
-            elif heuristic == 'h2': 
-                res_act_score = int(g_score + h2(res_act, goal_state))
-            else:
-                res_act_score = int(g_score + h3(res_act, goal_state))
-            # queue.append((res_act_score, res_act))
 
             if res_act not in visited:
                 visited.append(res_act)
+                nodes_expanded += 1
+
+                if heuristic == 'h1':
+                    res_act_score = int(g_score + h1(res_act, goal_state))
+                if heuristic == 'h2': 
+                    res_act_score = int(g_score + h2(res_act, goal_state))
+                if heuristic == 'h3':
+                    res_act_score = int(g_score + h3(res_act, goal_state))
+                # queue.append((res_act_score, res_act))
                 diction[res_act_score] = res_act
-            # queue.sort(key=lambda x:x[0], reverse=True)
+                # queue.sort(key=lambda x:x[0], reverse=True)
 
 
         temp = sorted(diction.keys())
@@ -336,7 +334,6 @@ def aStar(currentState, goalState, heuristic):
         # print(curr_state)
 
     return 0000, 0000
-
 
 
 

@@ -4,6 +4,7 @@ import numpy as np
 import math
 
 
+
 def goalState(size):
     """
     depending on the size, the goal state is longer/shorter
@@ -280,55 +281,152 @@ def aStar(currentState, goalState, heuristic):
         - nodesExtended : number of states explored. Essentially the number of times we call the heuristic() 
     """
     
+
     curr_state = copy.deepcopy(currentState)
     goal_state = copy.deepcopy(goalState) 
 
+    queue = [] 
     visited = []
 
     g_score = 0 
     nodes_expanded = 0 
 
-    if heuristic == 'h1':
-        curr_state_score = int(g_score + h1(curr_state, goal_state))
-    elif heuristic == 'h2': 
-        curr_state_score = int(g_score + h2(curr_state, goal_state))
-    else:
-        curr_state_score = int(g_score + h3(curr_state, goal_state))
+    queue.append((99999, curr_state))
+    visited.append(curr_state)
 
     diction = {}
-    diction[curr_state_score] = curr_state 
-
+    diction[999999] = curr_state 
 
     while len(diction) != 0:
         g_score += 1
-        print(curr_state)
-
+        # print(curr_state)
+        # print()
         if puzzleSolved(curr_state, goal_state): return g_score, nodes_expanded
+        acts = actions(curr_state)
 
+        for act in acts:
+            res_act = result(curr_state, act) 
+            if puzzleSolved(res_act, goal_state): return g_score, nodes_expanded
+        
+            nodes_expanded += 1
 
-        if curr_state not in visited:
-            visited.append(curr_state)
-            acts = actions(curr_state)
-            for act in acts:
-                res_act = result(curr_state, act) 
+            if heuristic == 'h1':
+                res_act_score = int(g_score + h1(res_act, goal_state))
+            elif heuristic == 'h2': 
+                res_act_score = int(g_score + h2(res_act, goal_state))
+            else:
+                res_act_score = int(g_score + h3(res_act, goal_state))
+            # queue.append((res_act_score, res_act))
 
-                nodes_expanded += 1
-
-                if heuristic == 'h1':
-                    res_act_score = int(g_score + h1(res_act, goal_state))
-                elif heuristic == 'h2': 
-                    res_act_score = int(g_score + h2(res_act, goal_state))
-                else:
-                    res_act_score = int(g_score + h3(res_act, goal_state))
-
-            
+            if res_act not in visited:
+                visited.append(res_act)
                 diction[res_act_score] = res_act
-      
-        temp = sorted(diction.keys(), reverse=True)
-        next_state = diction[temp[0]]
+            # queue.sort(key=lambda x:x[0], reverse=True)
 
-        curr_state = next_state
+
+        temp = sorted(diction.keys())
+
+        curr_state = diction[temp[0]]
 
         del diction[temp[0]]
 
+        # temp = queue.pop()
+        # temp = diction.pop()
+        # curr_state = temp[1] 
+        # print(curr_state)
+
     return 0000, 0000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # curr_state = copy.deepcopy(currentState)
+    # goal_state = copy.deepcopy(goalState) 
+
+    # visited = set()
+
+    # g_score = 0 
+    # nodes_expanded = 0 
+
+    # if heuristic == 'h1':
+    #     curr_state_score = int(g_score + h1(curr_state, goal_state))
+    # elif heuristic == 'h2': 
+    #     curr_state_score = int(g_score + h2(curr_state, goal_state))
+    # else:
+    #     curr_state_score = int(g_score + h3(curr_state, goal_state))
+
+    # frontier = {}
+    # frontier[curr_state_score] = curr_state
+
+    # # frontier = [] 
+    # # frontier.append(curr_state, 999)
+    # cost_so_far = {}
+    # cost_so_far[curr_state_score] = curr_state
+    # total = 0
+    # while frontier:
+
+    #     temp = sorted(frontier.keys(), reverse=True)
+
+    #     next_state = frontier[temp[0]]
+
+    #     curr_state = next_state
+
+    #     # del frontier[temp[0]]
+        
+    #     print(curr_state)
+
+    #     if puzzleSolved(curr_state, goal_state): return g_score, nodes_expanded
+
+
+    #     acts = actions(curr_state)
+
+        
+
+    #     for act in acts:
+    #         res_act = result(curr_state, act)
+    #         nodes_expanded += 1
+
+    #         if heuristic == 'h1':
+    #             res_act_score = int(g_score + h1(res_act, goal_state))
+    #         elif heuristic == 'h2': 
+    #             res_act_score = int(g_score + h2(res_act, goal_state))
+    #         else:
+    #             res_act_score = int(g_score + h3(res_act, goal_state))
+            
+    #         total += res_act_score
+
+    #         if res_act not in visited or res_act_score < total: 
+    #             visited.add(res_act)
+    #             frontier[res_act_score] = res_act
+    
+    
+
+    # return 0000, 0000
